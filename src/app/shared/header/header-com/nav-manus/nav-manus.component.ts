@@ -11,7 +11,7 @@ import { IMenuType } from 'src/app/shared/types/menu-d-t';
 export class NavManusComponent {
   public menu_data:IMenuType[] = menuData;
 
-  bg: string = 'assets/img/bg/mega-menu-bg.jpg';
+  bg: string = '/assets/img/bg/mega-menu-bg.jpg';
 
   getMenuClasses(item: IMenuType): string {
     const classes = [];
