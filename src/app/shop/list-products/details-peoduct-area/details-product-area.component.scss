@@ -1,0 +1,419 @@
+
+// .details-title {
+//   font-size: 14px;
+//   font-weight: 600;
+//   color: #222;
+//   text-transform: uppercase;
+//   letter-spacing: 0.5px;
+// }
+
+// .details-table {
+//   width: 100%;
+//   border-collapse: collapse;
+// }
+
+// .details-table tr {
+//   border-bottom: 1px solid #f0f0f0;
+// }
+
+// .details-table tr:last-child {
+//   border-bottom: none;
+// }
+
+// .detail-key {
+//   padding: 8px 12px 8px 0;
+//   font-size: 13px;
+//   color: #888;
+//   font-weight: 500;
+//   width: 45%;
+//   text-transform: capitalize;
+// }
+
+// .detail-value {
+//   padding: 8px 0;
+//   font-size: 13px;
+//   color: #222;
+//   font-weight: 500;
+// }
+// // ─── Trust Badges ────────────────────────────────────────
+// .trust-badges {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 0;
+//  // border: 1px solid #e5e7eb;
+//   border-radius: 10px;
+//   overflow: hidden;
+//   background: #fff;
+// }
+
+// .trust-badge {
+//   display: flex;
+//   align-items: center;
+//   gap: 1rem;
+//   padding: 0.875rem 1.25rem;
+//   border-bottom: 1px solid #f3f4f6;
+//   transition: background 0.2s ease;
+
+//   &:last-child {
+//     border-bottom: none;
+//   }
+
+//   &:hover {
+//     background: #f9fafb;
+//   }
+
+//   .trust-badge-icon {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 42px;
+//     height: 42px;
+//     min-width: 42px;
+//     background: #f3f4f6;
+//     border-radius: 10px;
+//     color: #111827;
+//     transition: all 0.2s ease;
+//   }
+
+//   &:hover .trust-badge-icon {
+//     background: #111827;
+//     color: #fff;
+//   }
+
+//   .trust-badge-text {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 2px;
+
+//     .trust-badge-title {
+//       font-size: 0.875rem;
+//       font-weight: 600;
+//       color: #111827;
+//       letter-spacing: -0.01em;
+//     }
+
+//     .trust-badge-desc {
+//       font-size: 0.78rem;
+//       color: #6b7280;
+//       line-height: 1.3;
+//     }
+//   }
+// }
+
+// // ─── Responsive ──────────────────────────────────────────
+// @media (max-width: 480px) {
+//   .trust-badge {
+//     padding: 0.75rem 1rem;
+//     gap: 0.75rem;
+
+//     .trust-badge-icon {
+//       width: 36px;
+//       height: 36px;
+//       min-width: 36px;
+
+//       svg {
+//         width: 20px;
+//         height: 20px;
+//       }
+//     }
+
+//     .trust-badge-text {
+//       .trust-badge-title {
+//         font-size: 0.813rem;
+//       }
+
+//       .trust-badge-desc {
+//         font-size: 0.725rem;
+//       }
+//     }
+//   }
+// }
+// // ─── Brand Badge ─────────────────────────────────────────
+// .product__brand-badge {
+//   span {
+//     display: inline-block;
+//     padding: 4px 12px;
+//     background: #f3f4f6;
+//     color: #374151;
+//     font-size: 0.78rem;
+//     font-weight: 700;
+//     letter-spacing: 0.08em;
+//     text-transform: uppercase;
+//     border-radius: 20px;
+//     border: 1px solid #e5e7eb;
+//   }
+// }
+
+// ─── Title ───────────────────────────────────────────────
+// .product__detail-title {
+//   font-size: 1.65rem;
+//   font-weight: 700;
+//   color: #111827;
+//   line-height: 1.3;
+//   letter-spacing: -0.02em;
+// }
+
+// ─── Meta row (rating + sku) ─────────────────────────────
+.product__detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.product__detail-sku {
+  font-size: 0.8rem;
+  color: #9ca3af;
+
+  strong {
+    color: #6b7280;
+  }
+}
+
+// ─── Price Block ─────────────────────────────────────────
+.product__price-block {
+  .product__price-2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+
+    .current-price {
+      font-size: 1.75rem;
+     // font-weight: 700;
+      color: #111827;
+    }
+
+    .old-price {
+      font-size: 1rem;
+      color: #9ca3af;
+      text-decoration: line-through;
+    }
+
+    .discount-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      background: #fef2f2;
+      color: #ef4444;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 20px;
+      border: 1px solid #fecaca;
+    }
+  }
+
+  .saving-text {
+    font-size: 0.825rem;
+    color: #6b7280;
+    margin: 6px 0 0;
+
+    strong {
+      color: #16a34a;
+    }
+  }
+}
+
+// ─── Divider ─────────────────────────────────────────────
+.product__divider {
+  border: none;
+  border-top: 1px solid #f3f4f6;
+  margin: 0;
+}
+
+// ─── Trust Badges ─────────────────────────────────────────
+.trust-badges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fafafa;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #d1d5db;
+    background: #f3f4f6;
+
+    .trust-badge-icon {
+      background: #111827;
+      color: #fff;
+    }
+  }
+
+  .trust-badge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    color: #374151;
+    transition: all 0.2s ease;
+  }
+
+  .trust-badge-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .trust-badge-title {
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .trust-badge-desc {
+      font-size: 0.72rem;
+      color: #9ca3af;
+      line-height: 1.3;
+    }
+  }
+}
+
+// ─── Info Pills ──────────────────────────────────────────
+.product__info-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.info-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  .info-pill-label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    font-weight: 500;
+  }
+
+  .info-pill-value {
+    font-size: 0.78rem;
+    color: #111827;
+    font-weight: 600;
+  }
+}
+
+// ─── Details Table ────────────────────────────────────────
+.details-title {
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+}
+
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+
+  tr {
+    &:nth-child(even) {
+      background: #f9fafb;
+    }
+
+    &:last-child td {
+      border-bottom: none;
+    }
+  }
+
+  td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .detail-key {
+    color: #6b7280;
+    font-weight: 500;
+    width: 40%;
+    border-right: 1px solid #f3f4f6;
+  }
+
+  .detail-value {
+    color: #111827;
+    font-weight: 500;
+  }
+}
+
+// ─── Responsive ──────────────────────────────────────────
+@media (max-width: 576px) {
+  .trust-badges {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+.add-cart-btn {
+  // display: inline-flex;
+  // align-items: center;
+  // justify-content: center;
+  // gap: 10px;
+  // width: 100%;
+  // padding: 14px 24px;
+  // background: #25D366;               // vert WhatsApp officiel
+  // color: #fff;
+  // font-weight: 600;
+   font-size: 1rem;
+  // text-transform: uppercase;
+  // letter-spacing: 0.5px;
+  // border: none;
+  // text-decoration: none;
+  // cursor: pointer;
+  // transition: all 0.3s ease;
+//  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+
+  i {
+    font-size: 1.25rem;
+  }
+
+  &:hover {
+    background: #25D366;
+    border-color: #25D366;             // vert foncé WhatsApp au survol
+    color: #fff;
+  }
+
+}
+
+
+/* ===== Toast Messages ===== */
+.toast-message {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease;
+  z-index: 1000;
+
+  &.success {
+    background: #10b981;
+    color: #fff;
+  }
+
+  &.error {
+    background: #ef4444;
+    color: #fff;
+  }
+}

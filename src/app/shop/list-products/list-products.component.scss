@@ -1,0 +1,196 @@
+/* ── Type buttons ───────────────────────── */
+.filter-type-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-type-btn {
+  padding: 6px 16px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #555;
+}
+
+.filter-type-btn:hover {
+  border-color: #222;
+  color: #222;
+}
+
+.filter-type-btn.active {
+  background: #222;
+  color: #fff;
+  border-color: #222;
+}
+
+/* ── Brand checkboxes ───────────────────── */
+.filter-brand-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.filter-brand-list li {
+  margin-bottom: 10px;
+}
+
+.filter-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+}
+
+.filter-checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #222;
+  cursor: pointer;
+}
+
+/* ── Active filter tags ─────────────────── */
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 12px;
+  color: #333;
+}
+
+.filter-tag i {
+  cursor: pointer;
+  font-size: 11px;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.filter-tag i:hover {
+  color: #222;
+}
+
+/* ── Scrollbar for brand list ───────────── */
+.filter-brand-list::-webkit-scrollbar {
+  width: 4px;
+}
+.filter-brand-list::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 4px;
+}
+/* ── Price Slider ───────────────────────── */
+.price-slider-wrapper {
+  padding: 0 4px;
+}
+
+.price-slider-track {
+  position: relative;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  margin: 18px 0 10px;
+}
+
+.price-slider-fill {
+  position: absolute;
+  height: 100%;
+  background: #222;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.price-range-input {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  pointer-events: none;
+  left: 0;
+}
+
+.price-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #222;
+  cursor: pointer;
+  pointer-events: all;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  transition: transform 0.15s;
+}
+
+.price-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.price-range-input::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #222;
+  cursor: pointer;
+  pointer-events: all;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+.price-slider-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #444;
+  font-weight: 500;
+}
+.reset-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: transparent;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.reset-filter-btn i {
+  font-size: 14px;
+  color: #999;
+  transition: color 0.2s;
+}
+
+.reset-filter-btn:hover {
+  border-color: #222;
+  color: #222;
+  background: #f8f8f8;
+}
+
+.reset-filter-btn:hover i {
+  color: #222;
+}

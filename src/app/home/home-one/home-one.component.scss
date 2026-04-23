@@ -1,0 +1,322 @@
+// ============================================================
+// Hero Slider Component Styles
+// Drop into your Angular project alongside the .ts and .html
+// ============================================================
+// ── Variables ──────────────────────────────────────────────
+$gold:        #b89a5a;
+$gold-light:  rgba(184, 154, 90, 0.3);
+$dark:        #1a1714;
+$cream:       #f0ece6;
+$text-muted:  #8a7a62;
+$text-body:   #5a5040;
+$serif:       'Georgia', 'Times New Roman', serif;
+// ── Section ────────────────────────────────────────────────
+.slider__area {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: $cream;
+}
+// ── Swiper Slide ───────────────────────────────────────────
+.single-slider {
+  position: relative;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  // push content up a bit to leave room for the features bar
+  padding-bottom: 120px;
+}
+// ── Left gradient overlay ──────────────────────────────────
+.slider__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(240, 236, 230, 0.95) 0%,
+    rgba(240, 236, 230, 0.80) 40%,
+    rgba(240, 236, 230, 0.00) 68%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+// ── Content wrapper ────────────────────────────────────────
+.slider__content {
+  position: relative;
+  z-index: 2;
+  padding-top: 80px;   // spacing from navbar
+}
+// ── Eyebrow label ──────────────────────────────────────────
+.slider__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  span {
+    font-family: $serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    color: $text-muted;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+}
+// ── Gold accent line ───────────────────────────────────────
+.slider__gold-line {
+  width: 2.5rem;
+  height: 1.5px;
+  background: $gold;
+  margin-bottom: 1.5rem;
+}
+// ── Main heading ───────────────────────────────────────────
+.slider__title {
+  font-family: $serif;
+  font-size: clamp(2.6rem, 5.5vw, 5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: $dark;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+// ── Subtitle ───────────────────────────────────────────────
+.slider__subtitle {
+  font-family: $serif;
+  font-size: 1rem;
+  color: $text-body;
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+  max-width: 420px;
+  font-weight: 400;
+}
+// ── CTA Button ─────────────────────────────────────────────
+.slider__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: $dark;
+  color: $cream;
+  padding: 0.85rem 2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: $serif;
+  border: 1.5px solid $dark;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+  cursor: pointer;
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    transition: transform 0.25s;
+  }
+  &:hover {
+    background: $gold;
+    border-color: $gold;
+    color: #fff;
+    svg {
+      transform: translateX(4px);
+    }
+  }
+}
+// ── Swiper Dots ────────────────────────────────────────────
+.tp-slider-dot {
+  position: absolute;
+  bottom: 130px;    // above the features bar
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 20;
+  // Swiper injects <span> bullets — style them here
+  :global(.tp-dot),
+  ::ng-deep .tp-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: rgba(184, 154, 90, 0.4);
+    border: none;
+    cursor: pointer;
+    transition: width 0.35s ease, background 0.3s ease;
+    opacity: 1;
+    margin: 0;
+  }
+  :global(.tp-dot-active),
+  ::ng-deep .tp-dot-active {
+    width: 32px;
+    background: $gold;
+  }
+}
+// ── Features bar ───────────────────────────────────────────
+.slider__features {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  border-top: 1px solid $gold-light;
+  //background: rgba(240, 236, 230, 0.90);
+  backdrop-filter: blur(6px);
+  .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+.slider__features-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+}
+.slider__feature-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+.slider__feature-divider {
+  width: 1px;
+  height: 40px;
+  background: $gold-light;
+  margin: 0 2rem;
+  flex-shrink: 0;
+  @media (max-width: 576px) {
+    display: none;
+  }
+}
+.slider__feature-icon {
+  color: $gold;
+  flex-shrink: 0;
+  svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+  }
+}
+.slider__feature-text {
+  .slider__feature-title {
+    font-family: $serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: $dark;
+    text-transform: uppercase;
+    margin: 0 0 2px;
+  }
+  .slider__feature-desc {
+    font-family: $serif;
+    font-size: 0.8rem;
+    color: $text-muted;
+    margin: 0;
+  }
+}
+// ── Slider height utility ──────────────────────────────────
+.slider__height {
+  min-height: 100vh;
+}
+// ── Animations on slide change ────────────────────────────
+.swiper-slide-active {
+  .slider__eyebrow,
+  .slider__gold-line,
+  .slider__title,
+  .slider__subtitle,
+  .slider__btn {
+    animation: slideUp 0.7s ease forwards;
+  }
+  .slider__gold-line:first-of-type { animation-delay: 0.05s; }
+  .slider__title                   { animation-delay: 0.10s; }
+  .slider__gold-line:last-of-type  { animation-delay: 0.15s; }
+  .slider__subtitle                { animation-delay: 0.20s; }
+  .slider__btn                     { animation-delay: 0.25s; }
+}
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.banner {
+    background: linear-gradient(135deg, #1a1208, #0a0a0a);
+    border-radius: var(--border-radius-lg);
+    padding: 40px 24px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+.banner::before {
+    content: '⌚';
+    position: absolute;
+    font-size: 120px;
+    opacity: 0.06;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.banner-title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: $cream;
+}
+.banner-sub {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
+}
+.gold-accent {
+    color: #c69d41;
+}
+.contact-card {
+background: rgb(0 0 0 / 3%);
+    border: 0.5px solid #e3e3e3;
+    border-radius: 10px;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.contact-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+.contact-icon {
+    font-size: 20px;
+    margin-top: 2px;
+}
+.contact-label {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.contact-val {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,592 @@
+// ─── Variables ────────────────────────────────────────────────────────────────
+$black:        #111;
+$white:        #fff;
+$gold:         #C9A84C;
+$gold-light:   #E8D5A3;
+$gold-dark:    #9A7A32;
+$gray-100:     #F8F7F4;
+$gray-200:     #EEECE7;
+$gray-400:     #B5B0A6;
+$gray-600:     #7A7570;
+$text:         #1A1816;
+$text-muted:   #6B6560;
+
+
+$container:    1200px;
+$transition:   0.3s ease;
+
+// ─── Google Fonts ─────────────────────────────────────────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
+
+// ─── Base ──────────────────────────────────────────────────────────────────────
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.container {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.ap-eyebrow {
+  display: block;
+  //font-family: $font-body;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: 1rem;
+}
+
+h1, h2, h3 {
+  //font-family: $font-display;
+  font-weight: 500;
+  color: $text;
+  line-height: 1.15;
+}
+
+p {
+  font-size: 15px;
+  color: $text-muted;
+  line-height: 1.8;
+}
+
+// ─── Hero ──────────────────────────────────────────────────────────────────────
+.ap-hero {
+  background: $black;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba($gold, 0.06) 0%, transparent 70%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 79px,
+        rgba(255,255,255,0.02) 80px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 79px,
+        rgba(255,255,255,0.02) 80px
+      );
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    grid-template-rows: auto auto auto;
+    gap: 0 5rem;
+    align-items: center;
+    max-width: $container;
+    width: 100%;
+    padding: 6rem 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 2rem;
+    }
+  }
+
+  .ap-eyebrow {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  &__title {
+    grid-column: 1;
+    grid-row: 2;
+    //font-family: $font-display;
+    font-size: clamp(48px, 7vw, 80px);
+    font-weight: 400;
+    color: $white;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+
+    em {
+      font-style: italic;
+      color: $gold;
+    }
+  }
+
+  &__sub {
+    grid-column: 1;
+    grid-row: 3;
+
+    font-size: 16px;
+    color: rgba($white, 0.55);
+    max-width: 480px;
+    line-height: 1.75;
+
+    @media (max-width: 768px) {
+      margin: 0 auto;
+    }
+  }
+
+  &__watch {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 6s ease-in-out infinite;
+
+    svg {
+      width: 140px;
+      height: auto;
+      filter: drop-shadow(0 20px 60px rgba($gold, 0.2));
+    }
+
+    @media (max-width: 768px) {
+      grid-column: 1;
+      grid-row: 4;
+      svg { width: 100px; }
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+// Watch SVG classes
+.ap-watch-strap   { fill: #2A2520; }
+.ap-watch-case    { fill: #3D3830; stroke: $gold; stroke-width: 0.5; }
+.ap-watch-dial    { fill: #1A1710; stroke: $gold; stroke-width: 0.5; }
+.ap-watch-marker  { stroke: $gold-light; stroke-width: 1.5; stroke-linecap: round; }
+.ap-watch-hand    { stroke: $white; stroke-linecap: round; }
+.ap-watch-hand--hour { stroke-width: 2.5; }
+.ap-watch-hand--min  { stroke-width: 1.5; }
+.ap-watch-center  { fill: $gold; }
+.ap-watch-crown   { fill: #3D3830; stroke: $gold; stroke-width: 0.5; }
+
+// ─── Stats ─────────────────────────────────────────────────────────────────────
+.ap-stats {
+  background: $gold;
+  padding: 3rem 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+
+    @media (max-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.ap-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  border-right: 1px solid rgba($white, 0.25);
+  text-align: center;
+
+  &:last-child { border-right: none; }
+
+  &__num {
+    //font-family: $font-display;
+    font-size: 36px;
+    font-weight: 500;
+    color: $white;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  &__lbl {
+    //font-family: $font-body;
+    font-size: 12px;
+    color: rgba($white, 0.8);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+}
+
+// ─── Story ─────────────────────────────────────────────────────────────────────
+.ap-story {
+  background: $white;
+  padding: 6rem 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  &__text {
+    h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      &:last-child { margin-bottom: 0; }
+    }
+  }
+
+  &__visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__img-wrap {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  }
+
+  &__img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+
+
+  // &__badge {
+  //   position: absolute;
+  //   top: -16px;
+  //   right: -16px;
+  //   background: $gold;
+  //   color: $white;
+  //   //font-family: $font-body;
+  //   font-size: 12px;
+  //   font-weight: 500;
+  //   letter-spacing: 2px;
+  //   text-transform: uppercase;
+  //   padding: 10px 18px;
+  //   z-index: 1;
+  //   border-radius: 2px;
+  // }
+
+  &__placeholder {
+    width: 100%;
+    height: 100%;
+    background: $gray-100;
+    border: 1px solid $gray-200;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    svg { width: 100%; height: 100%; }
+  }
+}
+
+// Dial SVG
+.ap-dial-bg    { fill: #1A1710; }
+.ap-dial-ring  { stroke: $gold; stroke-width: 1; fill: none; }
+.ap-dial-inner { fill: #111; }
+.ap-tick       { stroke: $gold-light; stroke-width: 1; }
+.ap-hand-h     { stroke: $white; stroke-width: 3; stroke-linecap: round; }
+.ap-hand-m     { stroke: $white; stroke-width: 1.5; stroke-linecap: round; }
+.ap-center-dot { fill: $gold; }
+
+// ─── Values ────────────────────────────────────────────────────────────────────
+.ap-values {
+  background: $gray-100;
+  padding: 6rem 0;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+
+    h2 {
+      font-size: clamp(28px, 3.5vw, 42px);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 960px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.ap-value-card {
+  background: $white;
+  border: 1px solid $gray-200;
+  padding: 2rem 1.5rem;
+  transition: transform $transition, box-shadow $transition;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba($black, 0.06);
+  }
+
+  &__icon {
+    width: 36px;
+    height: 36px;
+    color: $gold;
+    margin-bottom: 1.25rem;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  h3 {
+    //font-family: $font-display;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: $text;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+// ─── Brands ────────────────────────────────────────────────────────────────────
+.ap-brands {
+  background: $white;
+  padding: 5rem 0;
+  text-align: center;
+  border-top: 1px solid $gray-200;
+  border-bottom: 1px solid $gray-200;
+
+  h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    margin-bottom: 2.5rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+}
+
+.ap-brand-pill {
+  //font-family: $font-body;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $text-muted;
+  border: 1px solid $gray-200;
+  padding: 8px 20px;
+  border-radius: 100px;
+  transition: all $transition;
+  cursor: default;
+
+  &:hover {
+    border-color: $gold;
+    color: $gold;
+    background: rgba($gold, 0.04);
+  }
+}
+
+// ─── Visit ─────────────────────────────────────────────────────────────────────
+.ap-visit {
+  background: $gray-100;
+  padding: 6rem 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  &__info {
+    h2 {
+      font-size: clamp(28px, 3.5vw, 40px);
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid $gray-200;
+
+    &:last-child { border-bottom: none; padding-bottom: 0; }
+  }
+
+  &__label {
+    //font-family: $font-body;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $gold;
+  }
+
+  &__value {
+    //font-family: $font-display;
+    font-size: 18px;
+    color: $text;
+  }
+
+  &__map-wrap {
+    overflow: hidden;
+    border-radius: 2px;
+    border: 1px solid $gray-200;
+  }
+
+  &__map-placeholder {
+    background: $white;
+    svg { display: block; width: 100%; height: auto; }
+  }
+}
+
+// Map SVG
+.ap-map-bg       { fill: #F5F3EE; }
+.ap-map-road     { stroke: $white; stroke-width: 3; }
+.ap-map-road-sm  { stroke: $white; stroke-width: 1.5; }
+.ap-map-pin-bg   { fill: $gold; opacity: 0.15; }
+.ap-map-pin-dot  { fill: $gold; }
+.ap-map-pin-line { stroke: $gold; stroke-width: 1.5; stroke-dasharray: 2 2; }
+.ap-map-label {
+  fill: $text-muted;
+  //font-family: $font-body;
+  font-size: 10px;
+}
+
+// ─── CTA ───────────────────────────────────────────────────────────────────────
+.ap-cta {
+  background: $black;
+  padding: 6rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba($gold, 0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    //font-family: $font-display;
+    font-size: clamp(28px, 4vw, 44px);
+    color: $white;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: rgba($white, 0.5);
+    margin-bottom: 2.5rem;
+  }
+
+  &__btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+// ─── Buttons ───────────────────────────────────────────────────────────────────
+.ap-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  //font-family: $font-body;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  text-decoration: none;
+  transition: all $transition;
+  cursor: pointer;
+  border: none;
+
+  &--primary {
+    background: $gold;
+    color: $white;
+
+    &:hover {
+      background: $gold-dark;
+      color: $white;
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: rgba($white, 0.7);
+    border: 1px solid rgba($white, 0.2);
+
+    &:hover {
+      border-color: $gold;
+      color: $gold;
+    }
+  }
+}
+
+// ─── Responsive tweaks ─────────────────────────────────────────────────────────
+@media (max-width: 480px) {
+  .ap-stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ap-stat {
+    border-right: none;
+    border-bottom: 1px solid rgba($white, 0.25);
+
+    &:nth-child(odd) { border-right: 1px solid rgba($white, 0.25); }
+    &:last-child, &:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  }
+}

@@ -1,0 +1,25 @@
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  max-width: 190px;   /* your desired width */
+  height: auto;       /* keep proportions */
+  width: 100%;
+  object-fit: contain;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .logo-img {
+    max-width: 120px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .logo-img {
+    max-width: 100px;
+  }
+}

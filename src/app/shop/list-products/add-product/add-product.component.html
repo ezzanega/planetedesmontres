@@ -1,0 +1,369 @@
+<!-- Product Form Container -->
+<div class="product-form-container">
+
+  <!-- Full page loader overlay -->
+  @if (isSubmitting) {
+  <div class="page-loader-overlay">
+    <div class="page-loader-content">
+      <div class="page-loader-spinner">
+        <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="25" cy="25" r="20" fill="none" stroke-width="4" stroke="rgba(255,255,255,0.2)"></circle>
+          <path d="M25 5 A20 20 0 0 1 45 25" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <p class="page-loader-text">
+        {{ isEditMode ? 'Mise à jour du produit...' : 'Création du produit...' }}
+      </p>
+      <p class="page-loader-sub">Veuillez patienter, ne fermez pas cette page</p>
+    </div>
+  </div>
+  }
+
+  <!-- Form Header -->
+  <div class="form-header">
+    <div class="form-header-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      </svg>
+    </div>
+    <div class="form-header-text">
+      <h1>{{ isEditMode ? 'Modifier le produit' : 'Ajouter un nouveau produit' }}</h1>
+      <p>Remplissez les informations ci-dessous pour {{ isEditMode ? 'mettre à jour' : 'créer' }} un produit</p>
+    </div>
+  </div>
+  <!-- Form -->
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+    <!-- Basic Information Section -->
+    <div class="form-section">
+      <h2 class="section-title">Informations de base</h2>
+
+      <div class="form-grid">
+        <!-- Title -->
+        <div class="form-group full-width">
+          <label for="title">Titre du produit <span class="required">*</span></label>
+          <input type="text" id="title" formControlName="title" placeholder="ex : Rolex Submariner"
+            [class.error]="isFieldInvalid('title')">
+          <span class="error-message" *ngIf="isFieldInvalid('title')">
+            {{ getErrorMessage('title') }}
+          </span>
+        </div>
+
+        <!-- Brand -->
+        <div class="form-group">
+          <label for="brand">Marque <span class="required">*</span></label>
+          <select id="brand" formControlName="brand" [class.error]="isFieldInvalid('brand')">
+            <option value="">Sélectionner une marque</option>
+            <option value="BEVERLY HILLS POLO CLUB">BEVERLY HILLS POLO CLUB</option>
+            <option value="Lee Cooper">Lee Cooper</option>
+            <option value="Casio">Casio</option>
+            <option value="Seiko">Seiko</option>
+
+          </select>
+          <span class="error-message" *ngIf="isFieldInvalid('brand')">
+            {{ getErrorMessage('brand') }}
+          </span>
+        </div>
+
+
+
+        <!-- Brand -->
+        <!-- <div class="form-group">
+          <label for="brand">Marque <span class="required">*</span></label>
+          <input type="text" id="brand" formControlName="brand" placeholder="ex : Rolex"
+            [class.error]="isFieldInvalid('brand')">
+          <span class="error-message" *ngIf="isFieldInvalid('brand')">
+            {{ getErrorMessage('brand') }}
+          </span>
+        </div> -->
+
+        <!-- Parent Category -->
+        <!-- <div class="form-group">
+          <label for="parent_category">Catégorie parente <span class="required">*</span></label>
+          <select id="parent_category" formControlName="parent_category"
+            [class.error]="isFieldInvalid('parent_category')">
+            <option value="">Sélectionner une catégorie</option>
+            <option value="Watches">Montres</option>
+            <option value="Jewelry">Bijoux</option>
+            <option value="Accessories">Accessoires</option>
+          </select>
+          <span class="error-message" *ngIf="isFieldInvalid('parent_category')">
+            {{ getErrorMessage('parent_category') }}
+          </span>
+        </div> -->
+
+        <!-- Category -->
+        <div class="form-group">
+          <label for="category">Catégorie <span class="required">*</span></label>
+          <select id="category" formControlName="category" [class.error]="isFieldInvalid('category')">
+            <option value="">Sélectionner une catégorie</option>
+            <option value="Homme">Homme</option>
+            <option value="Femme">Femme</option>
+            <option value="Unisex">Unisexe</option>
+          </select>
+          <span class="error-message" *ngIf="isFieldInvalid('category')">
+            {{ getErrorMessage('category') }}
+          </span>
+        </div>
+
+        <!-- Small Description -->
+        <div class="form-group full-width">
+          <label for="small_desc">Courte description</label>
+          <textarea id="small_desc" formControlName="small_desc" rows="3"
+            placeholder="Brève description du produit..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div class="form-section">
+      <h2 class="section-title">Tarification</h2>
+
+      <div class="form-grid">
+        <!-- Price -->
+        <div class="form-group">
+          <label for="price">Prix (MAD) <span class="required">*</span></label>
+          <input type="number" id="price" formControlName="price" step="0.01" min="0" placeholder="0.00"
+            [class.error]="isFieldInvalid('price')">
+          <span class="error-message" *ngIf="isFieldInvalid('price')">
+            {{ getErrorMessage('price') }}
+          </span>
+        </div>
+
+        <!-- Old Price -->
+        <div class="form-group">
+          <label for="old_price">Ancien prix (MAD)</label>
+          <input type="number" id="old_price" formControlName="old_price" step="0.01" min="0" placeholder="0.00">
+          <small class="helper-text">Prix original avant remise</small>
+        </div>
+
+        <!-- Discount -->
+        <div class="form-group">
+          <label for="discount">Remise (%)</label>
+          <input type="number" id="discount" formControlName="discount" step="0.01" min="0" max="100" placeholder="0">
+        </div>
+
+        <!-- Rating -->
+        <div class="form-group">
+          <label for="rating">Note</label>
+          <input type="number" id="rating" formControlName="rating" step="0.1" min="0" max="5" placeholder="4.5">
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Details Section -->
+    <div class="form-section">
+      <h2 class="section-title">Détails du produit</h2>
+
+      <div class="form-grid">
+        <!-- Weight -->
+        <div class="form-group">
+          <label for="weight">Poids (kg)</label>
+          <input type="number" id="weight" formControlName="weight" step="0.01" min="0" placeholder="0.16">
+        </div>
+
+        <!-- Dimension -->
+        <div class="form-group">
+          <label for="dimension">Dimension</label>
+          <input type="text" id="dimension" formControlName="dimension" placeholder="ex : 40mm x 13mm">
+        </div>
+
+        <!-- Best Seller -->
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" formControlName="best_seller">
+            <span>Meilleures ventes</span>
+          </label>
+        </div>
+
+        <!-- New -->
+        <div class="form-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" formControlName="new">
+            <span>Nouvelle arrivée</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Images Section -->
+    <div class="form-section">
+      <h2 class="section-title">Images du produit</h2>
+
+      <div class="images-grid">
+
+        <!-- Main Image -->
+        <div class="image-upload-group">
+          <label>Image principale <span class="required">*</span></label>
+          <div class="image-upload-box" (click)="mainImageInput.click()">
+            <div class="upload-content" *ngIf="!mainImagePreview">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <p>Cliquez pour télécharger l'image principale</p>
+              <span>PNG, JPG, WEBP jusqu'à 5 Mo</span>
+            </div>
+            <img *ngIf="mainImagePreview" [src]="mainImagePreview" alt="Aperçu de l'image principale">
+          </div>
+          <input #mainImageInput type="file" (change)="onFileSelect($event, 'img')" accept="image/*" hidden>
+          <span class="error-message" *ngIf="isFieldInvalid('img')">
+            L'image principale est obligatoire
+          </span>
+        </div>
+
+        <!-- Thumbnail Image -->
+        <div class="image-upload-group">
+          <label>Image miniature</label>
+          <div class="image-upload-box" (click)="thumbImageInput.click()">
+            <div class="upload-content" *ngIf="!thumbImagePreview">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <p>Miniature (image au survol)</p>
+              <span>Optionnel</span>
+            </div>
+            <img *ngIf="thumbImagePreview" [src]="thumbImagePreview" alt="Aperçu miniature">
+          </div>
+          <input #thumbImageInput type="file" (change)="onFileSelect($event, 'thumb_img')" accept="image/*" hidden>
+        </div>
+
+        <!-- Related Images -->
+        <div class="image-upload-group full-width">
+          <label>Images associées (Galerie)</label>
+          <div class="image-upload-box multiple" (click)="relatedImagesInput.click()">
+            <div class="upload-content" *ngIf="relatedImagesPreviews.length === 0">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <p>Cliquez pour télécharger les images associées</p>
+              <span>Plusieurs images autorisées</span>
+            </div>
+            <div class="related-images-preview" *ngIf="relatedImagesPreviews.length > 0">
+              <div class="preview-item" *ngFor="let preview of relatedImagesPreviews; let i = index">
+                <img [src]="preview" [alt]="'Image associée ' + (i + 1)">
+                <button type="button" class="remove-btn" (click)="removeRelatedImage(i, $event)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </div>
+              <div class="add-more" (click)="relatedImagesInput.click(); $event.stopPropagation()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <input #relatedImagesInput type="file" (change)="onFileSelect($event, 'related_images')" accept="image/*"
+            multiple hidden>
+        </div>
+      </div>
+    </div>
+
+    <!-- Variants Section -->
+    <div class="form-section">
+      <h2 class="section-title">Variantes du produit</h2>
+
+      <div class="form-grid">
+        <!-- Sizes -->
+        <div class="form-group full-width">
+          <label for="sizes">Tailles disponibles</label>
+          <div class="tags-input">
+            <div class="tag" *ngFor="let size of sizes; let i = index">
+              {{ size }}
+              <button type="button" (click)="removeSize(i)">×</button>
+            </div>
+            <input type="text" #sizeInput (keydown.enter)="addSize(sizeInput.value, $event)"
+              placeholder="Tapez et appuyez sur Entrée">
+          </div>
+          <small class="helper-text">ex : 40mm, 42mm, 44mm</small>
+        </div>
+
+        <!-- Colors -->
+        <div class="form-group full-width">
+          <label for="colors">Couleurs disponibles</label>
+          <div class="tags-input">
+            <div class="tag" *ngFor="let color of colors; let i = index">
+              {{ color }}
+              <button type="button" (click)="removeColor(i)">×</button>
+            </div>
+            <input type="text" #colorInput (keydown.enter)="addColor(colorInput.value, $event)"
+              placeholder="Tapez et appuyez sur Entrée">
+          </div>
+          <small class="helper-text">ex : Noir, Argent, Or</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Details Section -->
+    <div class="form-section">
+      <h2 class="section-title">Détails supplémentaires</h2>
+
+      <div class="details-editor">
+        <div class="detail-item" *ngFor="let detail of detailsArray; let i = index">
+          <input type="text" [(ngModel)]="detail.key" [ngModelOptions]="{standalone: true}"
+            placeholder="Nom de la propriété (ex : matière)">
+          <input type="text" [(ngModel)]="detail.value" [ngModelOptions]="{standalone: true}"
+            placeholder="Valeur (ex : Acier inoxydable)">
+          <button type="button" class="remove-detail-btn" (click)="removeDetail(i)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </button>
+        </div>
+        <button type="button" class="add-detail-btn" (click)="addDetail()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Ajouter un détail
+        </button>
+      </div>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+      <button type="button" class="os-btn os-btn-2 os-btn-3" (click)="onCancel()">
+        Annuler
+      </button>
+      <button type="submit" class="os-btn os-btn-black text-white" [disabled]="isSubmitting">
+        <span *ngIf="!isSubmitting">{{ isEditMode ? 'Mettre à jour le produit' : 'Enregistrer' }}</span>
+        <span *ngIf="isSubmitting" class="loading">
+          <svg class="spinner" width="18" height="18" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity="0.25"></circle>
+            <path d="M12 2 A10 10 0 0 1 22 12" stroke="currentColor" stroke-width="4" fill="none"></path>
+          </svg>
+          {{ isEditMode ? 'Mise à jour...' : 'Création...' }}
+        </span>
+      </button>
+    </div>
+
+  </form>
+
+  <!-- Success/Error Messages -->
+  <div class="toast-message success" *ngIf="showSuccessMessage">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    {{ successMessage }}
+  </div>
+
+  <div class="toast-message error" *ngIf="showErrorMessage">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="8" x2="12" y2="12"></line>
+      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>
+    {{ errorMessage }}
+  </div>
+
+</div>

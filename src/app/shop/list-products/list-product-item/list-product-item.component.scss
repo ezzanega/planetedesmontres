@@ -1,0 +1,102 @@
+// WhatsApp Button Styles
+.wtp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #25D366;
+  color: #ffffff !important;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  // box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  svg {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    background-color: #20ba5a;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    transform: translateY(-2px);
+    color: #ffffff !important;
+
+    svg {
+      transform: scale(1.15);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+  }
+}
+
+// Ensure add-cart area is visible
+.add-cart {
+  opacity: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.product__wrapper:hover .add-cart {
+  opacity: 1;
+  bottom: 10px;
+}
+.product__thumb.thumb-box {
+  width: 100%;
+  height: 333px;
+  background: #fafafa;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 0 !important;
+  margin: 0;
+
+  // Remove any flex behavior from Bootstrap classes
+  display: block !important;
+}
+
+.thumb-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.thumb-link img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+// Hover swap
+.second-img {
+  opacity: 0;
+}
+
+.thumb-box:hover .second-img {
+  opacity: 1;
+}
+
+.thumb-box:hover .main-img {
+  opacity: 0;
+}
+
+.thumb-box:hover img {
+  transform: scale(1.03);
+}
+
+

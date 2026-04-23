@@ -1,0 +1,190 @@
+<section class="shop__area pt-100 pb-100">
+  <div class="container">
+    <div class="row">
+
+      <!-- ✅ LEFT SIDEBAR WITH FILTERS -->
+      @if (!shop_right && !shop_4_col && !shop_3_col) {
+      <div class="col-xl-3 col-lg-3 col-md-4">
+        <div class="shop__sidebar">
+
+
+          <!-- ✅ GENRE FILTER -->
+          <div class="sidebar__widget mb-35">
+            <div class="sidebar__widget-title mb-20">
+              <h4>Genre</h4>
+            </div>
+            <div class="filter-type-group">
+              @for (type of ['Homme', 'Femme', 'Unisex']; track type) {
+              <button class="filter-type-btn" [class.active]="selectedType === type" (click)="selectType(type)">
+                {{ type }}
+              </button>
+              }
+            </div>
+          </div>
+
+
+
+          <!-- ✅ BRAND FILTER -->
+          <div class="sidebar__widget mb-35">
+            <div class="sidebar__widget-title mb-20">
+              <h4>Marque</h4>
+            </div>
+            <ul class="filter-brand-list">
+              @for (brand of availableBrands; track brand) {
+              <li>
+                <label class="filter-checkbox-label">
+                  <input type="checkbox" [checked]="selectedBrands.includes(brand)" (change)="toggleBrand(brand)" />
+                  <span class="checkmark"></span>
+                  {{ brand }}
+                </label>
+              </li>
+              }
+            </ul>
+          </div>
+
+          <!-- ✅ COLLECTION FILTER - Best Seller / New -->
+          <div class="sidebar__widget mb-35">
+            <div class="sidebar__widget-title mb-20">
+              <h4>Collection</h4>
+            </div>
+            <div class="filter-type-group">
+              <button class="filter-type-btn" [class.active]="selectedTag === 'best-seller'"
+                (click)="selectTag('best-seller')">
+                Best Seller
+              </button>
+              <button class="filter-type-btn" [class.active]="selectedTag === 'new'" (click)="selectTag('new')">
+                Nouveau
+              </button>
+            </div>
+          </div>
+
+          <!-- ✅ PRICE SLIDER -->
+          <div class="sidebar__widget mb-35">
+            <div class="sidebar__widget-title mb-20">
+              <h4>Prix</h4>
+            </div>
+            <div class="price-slider-wrapper">
+              <div class="price-slider-track">
+                <div class="price-slider-fill"
+                  [style.left.%]="((priceRange.min - minPrice) / (maxPrice - minPrice)) * 100"
+                  [style.width.%]="((priceRange.max - priceRange.min) / (maxPrice - minPrice)) * 100">
+                </div>
+                <input type="range" class="price-range-input price-range-min" [min]="minPrice" [max]="maxPrice"
+                  [value]="priceRange.min" (input)="onMinPriceChange($event)" />
+                <input type="range" class="price-range-input price-range-max" [min]="minPrice" [max]="maxPrice"
+                  [value]="priceRange.max" (input)="onMaxPriceChange($event)" />
+              </div>
+              <div class="price-slider-values mt-15">
+                <span>MAD {{ priceRange.min }}</span>
+                <span>MAD {{ priceRange.max }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ✅ RESET -->
+          <div class="reset-button mb-30">
+            <button class="os-btn os-btn-black w-100" (click)="resetFilters()">
+              Réinitialiser
+            </button>
+          </div>
+        </div>
+      </div>
+      }
+
+      <!-- MAIN CONTENT -->
+      <div [ngClass]="{
+        'col-xl-12': shop_4_col,
+        'col-xl-9 col-lg-9 col-md-8': !shop_4_col && !shop_3_col,
+        'col-xl-8 offset-xl-2 col-lg-8 offset-lg-2': shop_3_col
+      }">
+        <div class="shop__content-area">
+
+          <!-- Header -->
+          <div class="shop__header d-sm-flex justify-content-between align-items-center mb-40">
+            <div class="shop__header-left">
+              <div class="show-text">
+                <span>Affichage de {{ displayedProducts.length }} sur {{ paginate.totalItems }} résultats</span>
+              </div>
+              <!-- ✅ Active filter tags -->
+              <div class="active-filters mt-10">
+                @if (selectedType) {
+                <span class="filter-tag">
+                  {{ selectedType }}
+                  <i class="fal fa-times" (click)="selectType(selectedType)"></i>
+                </span>
+                }
+
+                <!-- ✅ ADD THIS - Collection tag -->
+                @if (selectedTag) {
+                <span class="filter-tag">
+                  {{ selectedTag === 'best-seller' ? 'Best Seller' : 'Nouveau' }}
+                  <i class="fal fa-times" (click)="selectTag(selectedTag)"></i>
+                </span>
+                }
+
+                @for (brand of selectedBrands; track brand) {
+                <span class="filter-tag">
+                  {{ brand }}
+                  <i class="fal fa-times" (click)="toggleBrand(brand)"></i>
+                </span>
+                }
+              </div>
+            </div>
+            <div class="shop__header-right d-flex align-items-center justify-content-between justify-content-sm-end">
+
+              <div class="sort-wrapper mr-30 pr-25 p-relative">
+                <select>
+                  <option value="asc">Default Sorting</option>
+                  <option value="sale">On Sale</option>
+                  <option value="high">Price High To Low</option>
+                  <option value="low">Price Low To High</option>
+                </select>
+              </div>
+
+              <!-- ✅ Reset filter button — only shows when a filter is active -->
+              @if (selectedType || selectedBrands.length > 0 || selectedTag) {
+              <button class="reset-filter-btn" (click)="resetFilters()">
+                <i class="fal fa-times-circle"></i>
+                Réinitialiser
+              </button>
+              }
+            </div>
+          </div>
+
+          <!-- Empty state -->
+          @if (filteredProducts.length === 0) {
+          <div class="cartmini__empty text-center mt-80">
+            <img src="/assets/img/shop/empty-cart.png" alt="empty-cart-img" />
+            <h4>Aucun produit trouvé</h4>
+            <p>Essayez de modifier ou réinitialiser vos filtres.</p>
+            <button class="os-btn os-btn-3" (click)="resetFilters()">Réinitialiser les filtres</button>
+          </div>
+          }
+
+          <!-- Products grid -->
+          <div class="row custom-row-10">
+            @for (item of displayedProducts; track item.id) {
+            <div [ngClass]="{
+                'col-xl-3 col-lg-3 col-md-6 col-sm-6 custom-col-10': shop_4_col,
+                'col-xl-4 col-lg-4 col-md-6 col-sm-6 custom-col-10': !shop_4_col
+              }">
+              <app-list-product-item [product]="item"></app-list-product-item>
+            </div>
+            }
+          </div>
+
+          <!-- Pagination -->
+          <div class="row mt-40">
+            <div class="col-xl-12">
+              <div class="shop-pagination-wrapper d-md-flex justify-content-between align-items-center">
+                <app-pagination [data]="displayedProducts" [paginate]="paginate"
+                  (setPage)="setPage($event)"></app-pagination>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,127 @@
+<!-- header start -->
+<app-header-one [white_bg]="true"></app-header-one>
+<!-- header end -->
+
+<main>
+
+  <!-- breadcrumb start -->
+  <app-breadcrumb-one title="Contactez-nous" subtitle="Contact"
+    bg="/assets/img/page-title/page-title-3.jpeg"></app-breadcrumb-one>
+  <!-- breadcrumb end -->
+
+  <!-- contact area start -->
+  <section class="contact__area pb-100 pt-95">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6">
+          <div class="contact__info">
+            <h3>Visitez notre boutique</h3>
+            <ul class="mb-55">
+
+              <!-- Address -->
+              <li class="d-flex mb-35">
+                <div class="contact__info-icon mr-20">
+                  <i class="fal fa-map-marker-alt"></i>
+                </div>
+                <div class="contact__info-content">
+                  <h6>Adresse</h6>
+                  <span>37 Rue Oukeimden, Agdal, Rabat, Maroc</span>
+                </div>
+              </li>
+
+              <!-- Email -->
+              <li class="d-flex mb-35">
+                <div class="contact__info-icon mr-20">
+                  <i class="fal fa-envelope-open-text"></i>
+                </div>
+                <div class="contact__info-content">
+                  <h6>Email</h6>
+                  <span>contact@planettedesmontres.ma</span>
+                </div>
+              </li>
+
+              <!-- WhatsApp -->
+              <li class="d-flex mb-35">
+                <div class="contact__info-icon mr-20">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="contact__info-content">
+                  <h6>WhatsApp</h6>
+                  <span>+212 6 62 22 18 66</span>
+                </div>
+              </li>
+
+            </ul>
+
+            <!-- Description -->
+            <p>
+              Planète des Montres est votre destination de confiance pour des montres élégantes,
+              des bijoux raffinés et des lunettes modernes. Nous proposons des produits soigneusement
+              sélectionnés, alliant qualité, design et accessibilité. Profitez de la livraison gratuite
+              partout au Maroc.
+            </p>
+
+            <!-- Social links -->
+            <div class="contact__social">
+              <ul>
+                <li>
+                  <a href="https://web.facebook.com/planeteMontresRabat" target="_blank" rel="noopener">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/planete_des_montres" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://wa.me/212662221866" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-xl-6 col-lg-6">
+          <div class="contact__form">
+            <h3>Contactez-nous</h3>
+            <!-- contact form start -->
+            <app-contact-form></app-contact-form>
+            <!-- contact form end -->
+            <p class="ajax-response"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- contact area end -->
+
+  <!-- contact map area start -->
+  <section class="contact__map">
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <div class="col-xl-12">
+          <div class="contact__map-wrapper p-relative">
+            <iframe
+              src="https://maps.google.com/maps?q=37%20Rue%20Oukeimden%20Agdal%20Rabat&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- contact map area end -->
+
+  <!-- subscribe area start -->
+  <app-subscribe-area></app-subscribe-area>
+  <!-- subscribe area end -->
+
+</main>
+
+<!-- footer start -->
+<app-footer-one></app-footer-one>
+<!-- footer end -->

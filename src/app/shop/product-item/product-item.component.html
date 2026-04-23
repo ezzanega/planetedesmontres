@@ -1,0 +1,44 @@
+<div class="product__wrapper mb-60">
+  <div class="product__thumb">
+    <a [routerLink]="['/shop/shop-details', product.id]" class="w-img">
+      <img [src]="product.img" alt="product-img">
+      <img class="product__thumb-2" [src]="product.thumb_img" alt="product-img">
+    </a>
+    @if (product.discount || product.new) {
+    <div class="product__sale">
+      @if (product.new || product.discount) {
+      <span class="new">new</span>
+      }
+      @if (product.discount) {
+      <span class="percent">-{{ product.discount }}%</span>
+      }
+    </div>
+    }
+  </div>
+  <div class="product__content p-relative">
+    <div class="product__content-inner">
+      <h4><a [routerLink]="['/shop/shop-details', product.id]" [innerHTML]="product.title"></a></h4>
+      <div class="product__price transition-3">
+        <span>MAD {{product.price.toFixed(2)}}</span>
+        @if (product.old_price) {
+        <span class="old-price">MAD {{product.old_price.toFixed(2)}}</span>
+        }
+      </div>
+    </div>
+    <div class="add-cart p-absolute transition-3">
+      <a (click)="sendToWhatsApp()" class="cursor-pointer">
+        + Send wtp
+      </a>
+      <!-- @if (!isItemInCart(product)) {
+        <a (click)="addToCart(product)" class="cursor-pointer">
+          + Add to Cart
+        </a>
+      } -->
+      <!-- @if (isItemInCart(product)) {
+        <a routerLink="/shop/cart" class="cursor-pointer">
+          View Cart
+        </a>
+      } -->
+    </div>
+  </div>
+</div>

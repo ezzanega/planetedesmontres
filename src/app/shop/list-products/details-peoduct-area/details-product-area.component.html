@@ -1,0 +1,325 @@
+<div class="shop__top grey-bg-6 bg-white pt-100 pb-90">
+  <div class="container">
+
+    <!-- Loading State -->
+    @if (loading) {
+    <div class="text-center py-5">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+    </div>
+    }
+
+    <!-- Error State -->
+    @if (error) {
+    <div class="alert alert-danger" role="alert">{{ error }}</div>
+    }
+
+    <!-- Product Content -->
+    @if (!loading && !error && product) {
+    <div class="row">
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!-- LEFT — Images                                   -->
+      <!-- ═══════════════════════════════════════════════ -->
+      <div [ngClass]="style_2 ? 'col-xl-5 col-lg-5 col-md-6 col-sm-12 col-12'
+                               : 'col-xl-6 col-lg-6'">
+
+        @if (!style_2) {
+        <div class="product__modal-box d-flex">
+          <div class="product__modal-nav mr-20">
+            <nav>
+              <div class="nav nav-tabs" id="product-details" role="tablist">
+                <a class="nav-item nav-link mb-1 cursor-pointer"
+                  [class.active]="getFullImageUrl(product.img) === selectedImage" (click)="selectImage(product.img)">
+                  <div class="product__nav-img w-img">
+                    <img [src]="getFullImageUrl(product.img)" alt="main" style="width:92px;height:117px;">
+                  </div>
+                </a>
+                @for (img of product.related_images; track $index) {
+                <a class="nav-item nav-link mb-1 cursor-pointer" [class.active]="getFullImageUrl(img) === selectedImage"
+                  (click)="selectImage(img)">
+                  <div class="product__nav-img w-img">
+                    <img [src]="getFullImageUrl(img)" alt="product-img" style="width:92px;height:117px;">
+                  </div>
+                </a>
+                }
+              </div>
+            </nav>
+          </div>
+          <div class="mb-20">
+            <div class="product__modal-img product__thumb w-img">
+              <img [src]="selectedImage" alt="product-img">
+              @if (product.discount || product.new) {
+              <div class="product__sale">
+                @if (product.new) { <span class="new">new</span> }
+                @if (product.discount && +product.discount > 0) {
+                <span class="percent">-{{ product.discount }}%</span>
+                }
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+        }
+
+        @if (style_2) {
+        <div class="product__modal-box">
+          <div class="mb-20">
+            <div class="product__modal-img w-img">
+              <img [src]="selectedImage" alt="product-img">
+            </div>
+          </div>
+          <nav>
+            <div class="nav nav-tabs" id="product-details" role="tablist">
+              @for (img of product.related_images; track $index) {
+              <a class="nav-item nav-link cursor-pointer me-2" [class.active]="getFullImageUrl(img) === selectedImage"
+                (click)="selectImage(img)">
+                <div class="product__nav-img w-img">
+                  <img [src]="getFullImageUrl(img)" alt="product-img" style="width:92px;height:117px;">
+                </div>
+              </a>
+              }
+            </div>
+          </nav>
+        </div>
+        }
+
+        <!-- ── Extra product info ── -->
+        @if (bottomShow) {
+        <div class="product__bottom-info ">
+
+          <!-- Category + Brand pills -->
+          <!-- <div class="product__info-pills mb-20">
+              @if (product.category) {
+              <div class="info-pill">
+                <span class="info-pill-label">Catégorie</span>
+                <span class="info-pill-value">{{ product.category }}</span>
+              </div>
+              }
+              @if (product.brand) {
+              <div class="info-pill">
+                <span class="info-pill-label">Marque</span>
+                <span class="info-pill-value">{{ product.brand }}</span>
+              </div>
+              }
+              @if (product.weight) {
+              <div class="info-pill">
+                <span class="info-pill-label">Poids</span>
+                <span class="info-pill-value">{{ product.weight }} kg</span>
+              </div>
+              }
+              @if (product.dimension) {
+              <div class="info-pill">
+                <span class="info-pill-label">Dimensions</span>
+                <span class="info-pill-value">{{ product.dimension }}</span>
+              </div>
+              }
+            </div> -->
+
+          <!-- Characteristics table -->
+          @if (getProductDetails().length > 0) {
+          <div class="product__details-info mb-30">
+            <h6 class="details-title mb-15">Caractéristiques</h6>
+            <table class="details-table">
+              @for (detail of getProductDetails(); track detail.key) {
+              <tr>
+                <td class="detail-key">{{ detail.key }}</td>
+                <td class="detail-value">{{ detail.value }}</td>
+              </tr>
+              }
+            </table>
+          </div>
+          }
+
+        </div>
+        }
+      </div>
+
+      <!-- ═══════════════════════════════════════════════ -->
+      <!-- RIGHT — Product Info                            -->
+      <!-- ═══════════════════════════════════════════════ -->
+      <div [ngClass]="style_2 ? 'col-xl-7 col-lg-7 col-md-6 col-sm-12 col-12'
+                               : 'col-xl-6 col-lg-6'">
+        <div class="product__modal-content product__modal-content-2">
+
+          <!-- ── Brand badge ── -->
+          @if (product.brand) {
+          <div class="product__brand-badge mb-10">
+            <span>{{ product.brand }}</span>
+          </div>
+          }
+
+          <!-- ── Title ── -->
+          <h4 class="product__detail-title mb-10">
+            <a>{{ product.title }}</a>
+          </h4>
+
+          <!-- ── Rating + review count ── -->
+          <div class="product__detail-meta mb-15">
+            <div class="rating rating-shop">
+              <ul>
+                @for (star of [1,2,3,4,5]; track $index) {
+                <li>
+                  <span>
+                    <i [class]="$index < product.rating ? 'fas fa-star' : 'fal fa-star'"></i>
+                  </span>
+                </li>
+                }
+              </ul>
+            </div>
+            <!-- <span class="product__detail-sku">
+              Réf : <strong>{{ product.uid }}</strong>
+            </span> -->
+          </div>
+
+          <!-- ── Price block ── -->
+          <div class="product__price-block mb-25">
+            <div class="product__price-2">
+              <span class="current-price">{{ product.price }} MAD</span>
+              @if (product.old_price) {
+              <span class="old-price">{{ product.old_price }} MAD</span>
+              }
+              @if (product.discount && +product.discount > 0) {
+              <span class="discount-badge">-{{ product.discount }}%</span>
+              }
+            </div>
+          </div>
+
+          <!-- ── Short description ── -->
+          @if (product.small_desc) {
+          <div class="product__modal-des mb-25">
+            <p>{{ product.small_desc }}</p>
+          </div>
+          }
+
+          <!-- ── Divider ── -->
+          <hr class="product__divider mb-25">
+
+          <!-- ── Order form ── -->
+          <div class="product__modal-form mb-25">
+            <form #orderForm="ngForm">
+
+              @if (product.sizes && product.sizes.length > 0) {
+              <div class="product__modal-input size mb-20">
+                <label>Taille <i class="fas fa-star-of-life"></i></label>
+                <select [(ngModel)]="selectedSize" name="size" required>
+                  <option value="">— Sélectionner —</option>
+                  @for (size of product.sizes; track $index) {
+                  <option [value]="size">{{ size }}</option>
+                  }
+                </select>
+              </div>
+              }
+
+              @if (product.colors && product.colors.length > 0) {
+              <div class="product__modal-input color mb-20">
+                <label>Couleur <i class="fas fa-star-of-life"></i></label>
+                <select [(ngModel)]="selectedColor" name="color" required>
+                  <option value="">— Sélectionner —</option>
+                  @for (clr of product.colors; track $index) {
+                  <option [value]="clr">{{ clr }}</option>
+                  }
+                </select>
+              </div>
+              }
+
+              <!-- Quantity + CTA -->
+              <div class="pro-quan-area d-sm-flex align-items-center">
+                <div class="product-quantity-title">
+                  <label>Quantité</label>
+                </div>
+                <div class="product-quantity mr-20 mb-20">
+                  <div class="cart-plus-minus">
+                    <input type="text" [(ngModel)]="quantity" name="quantity" disabled readonly />
+                    <div class="dec qtybutton" (click)="decrementQuantity()">-</div>
+                    <div class="inc qtybutton" (click)="incrementQuantity()">+</div>
+                  </div>
+                </div>
+                <div class="pro-cart-btn">
+                  <a  class="add-cart-btn mb-20 cursor-pointer" (click)="onSubmit()">
+                    <i class="fab fa-whatsapp"></i> Commander
+                  </a>
+                </div>
+
+              </div>
+
+            </form>
+          </div>
+          <!-- ── Trust badges ── -->
+          <div class="trust-badges mb-25">
+
+            <!-- Livraison Gratuite -->
+            <div class="trust-badge">
+              <div class="trust-badge-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="1" y="3" width="15" height="13" rx="2" ry="2"></rect>
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                  <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                  <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                </svg>
+              </div>
+              <div class="trust-badge-text">
+                <span class="trust-badge-title">Livraison Gratuite</span>
+                <span class="trust-badge-desc">À partir de 2000 DH</span>
+              </div>
+            </div>
+
+            <!-- Garantie 1 An -->
+            <div class="trust-badge">
+              <div class="trust-badge-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </div>
+              <div class="trust-badge-text">
+                <span class="trust-badge-title">Garantie 1 An</span>
+                <span class="trust-badge-desc">Sérénité garantie</span>
+              </div>
+            </div>
+
+            <!-- Service Client - Phone -->
+            <a href="tel:+212642736434" class="trust-badge trust-badge--phone">
+              <div class="trust-badge-icon trust-badge-icon--phone">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07
+                 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2
+                 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7
+                 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27
+                 a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0
+                 0122 16.92z"></path>
+                </svg>
+              </div>
+              <div class="trust-badge-text">
+                <span class="trust-badge-title">Besoin d'aide ?</span>
+                <span class="trust-badge-desc trust-badge-desc--phone">+212 6 62 22 18 66</span>
+              </div>
+            </a>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+    <!-- Success/Error Messages -->
+  <div class="toast-message success" *ngIf="showSuccessMessage">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    {{ successMessage }}
+  </div>
+
+  <div class="toast-message error" *ngIf="showErrorMessage">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="8" x2="12" y2="12"></line>
+      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>
+    {{ errorMessage }}
+  </div>
+</div>
