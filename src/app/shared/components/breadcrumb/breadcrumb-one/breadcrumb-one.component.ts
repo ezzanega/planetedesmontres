@@ -11,7 +11,7 @@ export class BreadcrumbOneComponent {
   @Input() title!: string;
   @Input() subtitle!: string;
 
-  public bg_img = '/assets/img/page-title/page-title-3.jpeg';
+  public bg_img = 'assets/img/page-title/page-title-3.jpeg';
 
   ngOnInit () {
     if(this.bg){

@@ -12,17 +12,17 @@ export class HomeSevenTestimonialComponent {
   public testimonial_data = [
     {
       id: 1,
-      img: '/assets/img/testimonial/testi1.webp',
+      img: 'assets/img/testimonial/testi1.webp',
       desc: "Great theme, extended super and fast professional support. easy to use, flexible, visual composer and more functional plugins on board. Yes a real good, strong theme with structured coding. Enjoy it! friendly and super good!",
     },
     {
       id: 2,
-      img: '/assets/img/testimonial/testi2.webp',
+      img: 'assets/img/testimonial/testi2.webp',
       desc: "Great theme, extended super and fast professional support. easy to use, flexible, visual composer and more functional plugins on board. Yes a real good, strong theme with structured coding. Enjoy it! friendly and super good!",
     },
     {
       id: 3,
-      img: '/assets/img/testimonial/testi3.webp',
+      img: 'assets/img/testimonial/testi3.webp',
       desc: "Great theme, extended super and fast professional support. easy to use, flexible, visual composer and more functional plugins on board. Yes a real good, strong theme with structured coding. Enjoy it! friendly and super good!",
     },
   ]

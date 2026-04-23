@@ -13,12 +13,12 @@ export class ClientSliderComponent {
   @Input() style_2: Boolean = false;
   // client logos
   public client_logos = [
-    { id: 1, logo: '/assets/img/shop/marques/us-polo-assn.png' },
-    { id: 2, logo: '/assets/img/shop/marques/beverly hills polo club.png' },
-    { id: 3, logo: '/assets/img/shop/marques/GUESS-Logo.png' },
-    { id: 4, logo: '/assets/img/shop/marques/Logo_Festina.png' },
-       { id: 5, logo: '/assets/img/shop/marques/us-polo-assn.png' },
-    { id: 6, logo: '/assets/img/shop/marques/beverly hills polo club.png' },
+    { id: 1, logo: 'assets/img/shop/marques/us-polo-assn.png' },
+    { id: 2, logo: 'assets/img/shop/marques/beverly hills polo club.png' },
+    { id: 3, logo: 'assets/img/shop/marques/GUESS-Logo.png' },
+    { id: 4, logo: 'assets/img/shop/marques/Logo_Festina.png' },
+       { id: 5, logo: 'assets/img/shop/marques/us-polo-assn.png' },
+    { id: 6, logo: 'assets/img/shop/marques/beverly hills polo club.png' },
     { id: 7, logo: '/assets/img/shop/marques/GUESS-Logo.png' },
     { id: 8, logo: '/assets/img/shop/marques/Logo_Festina.png' },
     // {id:4,logo:'/assets/img/client/client-4.jpg'},
