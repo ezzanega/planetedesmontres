@@ -1,4 +1,8 @@
-<div class="client__slider swiper-container text-center">
+<div class="client__slider swiper-container text-center" #clientSlider>
+  <!-- Left arrow -->
+  <div class="swiper-button-prev"></div>
+    <!-- Right arrow -->
+  <div class="swiper-button-next"></div>
   <div class="swiper-wrapper">
     @for (logo of client_logos; track logo.id) {
       <div class="client__thumb swiper-slide">
@@ -8,4 +12,6 @@
       </div>
     }
   </div>
+
+
 </div>

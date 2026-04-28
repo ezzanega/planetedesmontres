@@ -1,3 +1,4 @@
+
 <header>
   <div id="header-sticky"
     [ngClass]="['header__area', transparent ? 'header__transparent' : '', header_big ? 'box-25' : !white_bg ? 'grey-bg' : '', sticky ? 'sticky' : '']"
@@ -7,7 +8,7 @@
         <!-- <div
           [ngClass]="header_big ? 'col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12' : 'col-xl-3 col-lg-3 col-md-4 col-sm-4'">
           <div class="logo">
-            <a routerLink="/home/home-style-1">
+            <a routerLink="/home">
               <img src="assets/img/logo/logo.png" alt="logo">
             </a>
           </div>
@@ -16,7 +17,7 @@
           [ngClass]="header_big ? 'col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12' : 'col-xl-3 col-lg-3 col-md-4 col-sm-4'">
 
           <div class="logo">
-            <a routerLink="/home/home-style-1">
+            <a routerLink="/home">
               <img src="assets/img/logo/logo-6.png" alt="logo" class="logo-img">
             </a>
           </div>
@@ -37,26 +38,26 @@
                 <i class="fas fa-bars"></i>
               </a>
             </div>
-            @if (!header_big) {
+            <!-- @if (!header_big) {
             <div class="header__action">
               <ul>
-                <!-- <li>
+               <li>
                   <a (click)="utilsService.handleSearchOpen()" class="search-toggle cursor-pointer">
                     <i class="ion-ios-search-strong"></i> Search
                   </a>
-                </li> -->
-                <!-- <li>
+                </li>
+               <li>
                   <a class="cart cursor-pointer">
                     <i class="ion-bag"></i> Cart <span>({{cartService.totalPriceQuantity().quantity}})</span>
                   </a>
                   <app-mini-cart></app-mini-cart>
-                </li> -->
+                </li>
                 <li> <a class="cursor-pointer"><i class="far fa-bars"></i></a>
                   <app-extra-info></app-extra-info>
                 </li>
               </ul>
             </div>
-            }
+            } -->
           </div>
         </div>
 

@@ -4,7 +4,7 @@ import { HomeOneComponent } from './home-one/home-one.component';
 
 const routes: Routes = [
   {
-    path:'home-style-1',
+    path:'',
     component:HomeOneComponent,
     title:'Planète des Montres',
   },

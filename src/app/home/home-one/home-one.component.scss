@@ -320,3 +320,173 @@ background: rgb(0 0 0 / 3%);
 
 
 
+// ============================================================
+// iOS / iPhone Responsive Fix (iPhone X, XS, 13)
+// Screen widths: 375px (X/XS) and 390px (13)
+// ============================================================
+
+// ── Base mobile reset (≤768px) ─────────────────────────────
+@media (max-width: 768px) {
+
+  .slider__area {
+    // Let the section grow naturally instead of clipping
+    overflow: visible;
+  }
+
+  .single-slider {
+    min-height: 100vh;
+    // Remove fixed padding-bottom — features bar is now outside the flow
+    padding-bottom: 0;
+    background-position: 65% center; // shift watch image visible on narrow screens
+    align-items: center;
+  }
+
+  .slider__overlay {
+    background: linear-gradient(
+      to right,
+      rgba(240, 236, 230, 0.96) 0%,
+      rgba(240, 236, 230, 0.88) 50%,
+      rgba(240, 236, 230, 0.50) 100%
+    );
+  }
+
+  .slider__content {
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
+
+  .slider__title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .slider__subtitle {
+    font-size: 0.88rem;
+    max-width: 100%;
+    margin-bottom: 1.75rem;
+  }
+
+  .slider__btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.68rem;
+  }
+
+  // ── Pull features bar OUT of absolute positioning on mobile ─
+  // This is the core fix: absolute bottom causes height miscalculations on iOS
+  .slider__features {
+    position: relative;  // ← key change
+    bottom: auto;
+    left: auto;
+    right: auto;
+    border-top: 1px solid $gold-light;
+    background: $cream;  // solid bg since it's no longer floating
+    backdrop-filter: none;
+
+    .container {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+  }
+
+  // Hide dots on mobile (or reposition relative to slide)
+  .tp-slider-dot {
+    bottom: 16px;
+  }
+
+  // Features: 2×2 grid
+  .slider__features-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1rem;
+    align-items: start;
+  }
+
+  .slider__feature-divider {
+    display: none;
+  }
+
+  .slider__feature-item {
+    flex: unset;
+    gap: 10px;
+  }
+
+  .slider__feature-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+// ── iPhone X / XS (375px) & iPhone 13 (390px) ─────────────
+@media (max-width: 430px) {
+
+  .single-slider {
+    min-height: 70vh; // don't force full screen, let content breathe
+    background-position: 70% center;
+    padding-bottom: 0;
+  }
+
+  .slider__content {
+    padding-top: 80px;
+    padding-bottom: 32px;
+  }
+
+  .slider__eyebrow span {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+  }
+
+  .slider__gold-line {
+    width: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .slider__title {
+    font-size: clamp(1.85rem, 9.5vw, 2.5rem);
+    line-height: 1.08;
+  }
+
+  .slider__subtitle {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .slider__btn {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.66rem;
+    gap: 0.5rem;
+  }
+
+  .tp-slider-dot {
+    bottom: 12px;
+  }
+
+  // Features: full single column
+  .slider__features-inner {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .slider__features .container {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .slider__feature-text {
+    .slider__feature-title { font-size: 0.63rem; }
+    .slider__feature-desc  { font-size: 0.73rem; }
+  }
+
+  .slider__feature-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// ── iOS Safe Area support (notch / home indicator) ─────────
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  @media (max-width: 430px) {
+    .slider__features .container {
+      padding-bottom: calc(14px + env(safe-area-inset-bottom));
+    }
+  }
+}

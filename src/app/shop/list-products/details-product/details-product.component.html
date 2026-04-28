@@ -1,3 +1,24 @@
+<div class="trust-banner mb-40">
+  <!-- <div class="trust-banner__accent">
+    <span class="trust-banner__accent-line"></span>
+    <span class="trust-banner__accent-diamond"></span>
+    <span class="trust-banner__accent-text">Nos Engagements</span>
+    <span class="trust-banner__accent-diamond"></span>
+    <span class="trust-banner__accent-line right"></span>
+  </div> -->
+
+  <div class="trust-banner__row">
+    <div class="trust-banner__item" *ngFor="let item of trustItems">
+      <div class="trust-banner__icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" [innerHTML]="item.svgPath"></svg>
+      </div>
+      <div class="trust-banner__content">
+        <h5 class="trust-banner__title">{{ item.title }}</h5>
+        <p class="trust-banner__desc">{{ item.desc }}</p>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- header start -->
 <app-header-one [transparent]="true" [white_bg]="true"></app-header-one>
 <!-- header end -->
@@ -9,7 +30,7 @@
   <!-- breadcrumb end -->
 
   <app-details-product-area></app-details-product-area>
-  
+
 </main>
 
 <!-- footer start -->

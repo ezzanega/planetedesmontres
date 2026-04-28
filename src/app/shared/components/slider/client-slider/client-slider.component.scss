@@ -29,3 +29,34 @@
     }
   }
 }
+.swiper-button-next,
+.swiper-button-prev {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  color: #c8a85a; // gold accent
+  transition: all 0.25s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #c8a85a;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Make arrows smaller & cleaner */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+// @media (max-width: 768px) {
+//   .swiper-button-next,
+//   .swiper-button-prev {
+//     display: none;
+//   }
+// }

@@ -8,7 +8,7 @@ const menuData: IMenuType[] = [
     hasDropdown: false,
     megamenu: false,
     dropdownItems: [
-      { link: '/home/home-style-1', title: 'Style d’accueil 1' },
+      { link: '/home', title: 'Style d’accueil 1' },
     ]
   },
   {

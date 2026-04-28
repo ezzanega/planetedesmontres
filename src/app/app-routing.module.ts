@@ -7,7 +7,7 @@ import { ManageProductComponent } from './shop/manage-product/manage-product.com
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home/home-style-1',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {

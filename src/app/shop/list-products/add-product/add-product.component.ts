@@ -59,6 +59,8 @@ export class AddProductComponent implements OnInit {
     this.checkEditMode();
   }
 
+
+  
   initForm(): void {
     this.productForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
