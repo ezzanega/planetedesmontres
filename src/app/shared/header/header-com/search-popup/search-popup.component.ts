@@ -49,7 +49,7 @@ export class SearchPopupComponent {
       if (this.productType) {
         queryParams['productType'] = this.productType;
       }
-      this.router.navigate(['/shop/search'], { queryParams });
+      this.router.navigate(['/boutique/search'], { queryParams });
     }
   }
 }

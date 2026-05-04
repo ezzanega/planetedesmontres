@@ -32,7 +32,7 @@ export class CategoryFilterComponent {
       ...currentQueryParams, // Keep the existing query parameters
       category: this.utilsService.convertToURL(categoryValue),
     };
-    this.router.navigate(['/shop'], { queryParams });
+    this.router.navigate(['/boutique'], { queryParams });
   }
 
   public handleSubCategory(subcategoryValue: string): void {
@@ -41,6 +41,6 @@ export class CategoryFilterComponent {
       ...currentQueryParams, // Keep the existing query parameters
       subcategory: this.utilsService.convertToURL(subcategoryValue),
     };
-    this.router.navigate(['/shop'], { queryParams });
+    this.router.navigate(['/boutique'], { queryParams });
   }
 }

@@ -60,7 +60,7 @@ export class AddProductComponent implements OnInit {
   }
 
 
-  
+
   initForm(): void {
     this.productForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
@@ -391,7 +391,7 @@ export class AddProductComponent implements OnInit {
       next: (res) => {
         this.isSubmitting = false;
         this.showSuccess('Product created successfully!');
-        this.router.navigate(['/shop']);
+        this.router.navigate(['/boutique']);
         // setTimeout(() => {
 
         // }, 2000);
@@ -413,7 +413,7 @@ export class AddProductComponent implements OnInit {
     //     this.isSubmitting = false;
     //     this.showSuccess('Product updated successfully!');
     //     setTimeout(() => {
-    //       this.router.navigate(['/shop']);
+    //       this.router.navigate(['/boutique']);
     //     }, 2000);
     //   },
     //   error: (error) => {
@@ -425,7 +425,7 @@ export class AddProductComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.router.navigate(['/shop']);
+    this.router.navigate(['/boutique']);
   }
 
   // ═══════════════════════════════════════════════════════

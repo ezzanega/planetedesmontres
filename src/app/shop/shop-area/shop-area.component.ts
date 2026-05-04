@@ -141,6 +141,6 @@ export class ShopAreaComponent {
   handleResetFilter() {
     this.minPrice = 0;
     this.maxPrice = this.productService.maxPrice;
-    this.router.navigate(['/shop']);
+    this.router.navigate(['/boutique']);
   }
 }

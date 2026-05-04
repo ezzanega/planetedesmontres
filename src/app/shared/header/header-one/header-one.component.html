@@ -1,5 +1,51 @@
 
 <header>
+<!-- announcement bar start -->
+<div class="announcement-bar">
+  <div class="announcement-bar__track">
+
+    <span class="announcement-bar__item">
+      <i class="fas fa-truck"></i>&nbsp; Livraison Gratuite à partir de 700DH
+    </span>
+    <span class="announcement-bar__separator">•</span>
+    <span class="announcement-bar__item">
+      <i class="fas fa-phone"></i>&nbsp; +212 6 62 22 18 66
+    </span>
+    <span class="announcement-bar__separator">•</span>
+    <span class="announcement-bar__item">
+      <i class="fas fa-shield-alt"></i>&nbsp; 1 an de Garantie
+    </span>
+    <span class="announcement-bar__separator">•</span>
+
+    <span class="announcement-bar__item">
+      <i class="fas fa-truck"></i>&nbsp; Livraison Gratuite à partir de 700DH
+    </span>
+    <span class="announcement-bar__separator">•</span>
+    <span class="announcement-bar__item">
+      <i class="fas fa-phone"></i>&nbsp; +212 6 62 22 18 66
+    </span>
+    <span class="announcement-bar__separator">•</span>
+    <span class="announcement-bar__item">
+      <i class="fas fa-shield-alt"></i>&nbsp; 1 an de Garantie
+    </span>
+    <span class="announcement-bar__separator">•</span>
+
+    <span class="announcement-bar__item">
+      <i class="fas fa-truck"></i>&nbsp; Livraison Gratuite à partir de 700DH
+    </span>
+    <span class="announcement-bar__separator">•</span>
+    <span class="announcement-bar__item">
+      <i class="fas fa-phone"></i>&nbsp; +212 6 62 22 18 66
+    </span>
+    <span class="announcement-bar__separator">•</span>
+    <span class="announcement-bar__item">
+      <i class="fas fa-shield-alt"></i>&nbsp; 1 an de Garantie
+    </span>
+    <span class="announcement-bar__separator">•</span>
+
+  </div>
+</div>
+<!-- announcement bar end -->
   <div id="header-sticky"
     [ngClass]="['header__area', transparent ? 'header__transparent' : '', header_big ? 'box-25' : !white_bg ? 'grey-bg' : '', sticky ? 'sticky' : '']"
     id="header-sticky">
@@ -61,7 +107,7 @@
           </div>
         </div>
 
-        @if (header_big) {
+        <!-- @if (header_big) {
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-7 col-10">
           <div class="header__action header__action-2 f-right">
             <ul>
@@ -74,19 +120,15 @@
                 <a class="cart cursor-pointer"><i class="ion-bag"></i> Cart
                   <span>({{cartService.totalPriceQuantity().quantity}})</span>
                 </a>
-                <!-- mini cart start -->
                 <app-mini-cart></app-mini-cart>
-                <!-- mini cart end -->
               </li>
               <li> <a class="cursor-pointer"><i class="far fa-bars"></i></a>
-                <!-- extra info start -->
                 <app-extra-info></app-extra-info>
-                <!-- extra info end -->
               </li>
             </ul>
           </div>
         </div>
-        }
+        } -->
       </div>
     </div>
   </div>

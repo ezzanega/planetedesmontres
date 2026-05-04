@@ -89,7 +89,7 @@ export class ListProductsComponent implements OnInit {
   private getImageUrl(path: string): string {
     if (!path) return '';
     if (path.startsWith('http')) return path;
-    return 'https://ebackendapi.hnam3ak.ma' + path;
+    return 'https://shop.planetedesmontre.com' + path;
   }
   toggleBrand(brand: string) {
     const index = this.selectedBrands.indexOf(brand);

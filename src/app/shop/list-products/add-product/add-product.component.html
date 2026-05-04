@@ -50,32 +50,34 @@
         </div>
 
         <!-- Brand -->
-        <div class="form-group">
-          <label for="brand">Marque <span class="required">*</span></label>
-          <select id="brand" formControlName="brand" [class.error]="isFieldInvalid('brand')">
-            <option value="">Sélectionner une marque</option>
+<div class="form-group">
+  <label for="brand">Marque <span class="required">*</span></label>
+  <select id="brand" formControlName="brand" [class.error]="isFieldInvalid('brand')">
+    <option value="">Sélectionner une marque</option>
 
-            <!-- Existing -->
-            <option value="BEVERLY HILLS POLO CLUB">BEVERLY HILLS POLO CLUB</option>
-            <option value="Lee Cooper">Lee Cooper</option>
-            <option value="Casio">Casio</option>
-            <option value="Seiko">Seiko</option>
-            <!-- Added -->
-            <option value="Slazenger">Slazenger</option>
-            <option value="Lee Cooper">Lee Cooper</option>
-            <option value="POLO CLUB BEVERLY HILLS">POLO CLUB BEVERLY HILLS</option>
-            <option value="Polo Privé">Polo Privé</option>
-            <option value="Polo Exchange">Polo Exchange</option>
-            <option value="US Polo Assn">US Polo Assn</option>
-            <option value="Gant">Gant</option>
-            <option value="Boccadamo">Boccadamo</option>
-            <option value="Bigotti">Bigotti</option>
+    <!-- Brands -->
+    <option value="Slazenger">Slazenger</option>
+    <option value="Lee Cooper">Lee Cooper</option>
+    <option value="Polo Club Beverly Hills">Polo Club Beverly Hills</option>
+    <option value="Polo Privé">Polo Privé</option>
+    <option value="Polo Exchange">Polo Exchange</option>
+    <option value="US Polo Assn">US Polo Assn</option>
+    <option value="Gant">Gant</option>
+    <option value="Boccadamo">Boccadamo</option>
+    <option value="Bigotti">Bigotti</option>
+    <option value="Rosy">Rosy</option>
+    <option value="Diamond Paris">Diamond Paris</option>
+    <option value="Quantum">Quantum</option>
 
-          </select>
-          <span class="error-message" *ngIf="isFieldInvalid('brand')">
-            {{ getErrorMessage('brand') }}
-          </span>
-        </div>
+    <!-- Optional existing ones -->
+    <option value="Casio">Casio</option>
+    <option value="Seiko">Seiko</option>
+  </select>
+
+  <span class="error-message" *ngIf="isFieldInvalid('brand')">
+    {{ getErrorMessage('brand') }}
+  </span>
+</div>
 
 
 

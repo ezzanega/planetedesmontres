@@ -12,8 +12,8 @@ const menuData: IMenuType[] = [
     ]
   },
   {
-    link: '/shop',
-    title: 'Montres',
+    link: '/boutique',
+    title: 'Boutique',
     hasDropdown: false,
     megamenu: false,
     dropdownItems: [
@@ -21,35 +21,35 @@ const menuData: IMenuType[] = [
         link: '/shop',
         title: 'Boutique',
         dropdownMenu: [
-          { link: '/shop', title: 'Boutique standard' },
-          { link: '/shop/shop-right', title: 'Barre latérale droite' },
-          { link: '/shop/shop-4-col', title: '4 colonnes' },
-          { link: '/shop/shop-3-col', title: '3 colonnes' },
-          { link: '/shop', title: 'Tous les produits' },
-          { link: '/shop', title: 'Catalogue' },
-          { link: '/shop', title: 'Défilement infini' },
+          { link: '/boutique', title: 'Boutique standard' },
+          { link: '/boutique/shop-right', title: 'Barre latérale droite' },
+          { link: '/boutique/shop-4-col', title: '4 colonnes' },
+          { link: '/boutique/shop-3-col', title: '3 colonnes' },
+          { link: '/boutique', title: 'Tous les produits' },
+          { link: '/boutique', title: 'Catalogue' },
+          { link: '/boutique', title: 'Défilement infini' },
         ]
       },
       {
         link: '/shop',
         title: 'Produits',
         dropdownMenu: [
-          { link: '/shop/shop-details', title: 'Détails du produit' },
-          { link: '/shop/shop-details', title: 'Produit - Version 2' },
-          { link: '/shop/shop-details', title: 'Produit - Version 3' },
-          { link: '/shop/shop-details', title: 'Produit - Version 4' },
-          { link: '/shop/shop-details', title: 'Produit simple' },
-          { link: '/shop/shop-details', title: 'Produit avec options' },
-          { link: '/shop/shop-details', title: 'Produit externe' },
+          { link: '/boutique/shop-details', title: 'Détails du produit' },
+          { link: '/boutique/shop-details', title: 'Produit - Version 2' },
+          { link: '/boutique/shop-details', title: 'Produit - Version 3' },
+          { link: '/boutique/shop-details', title: 'Produit - Version 4' },
+          { link: '/boutique/shop-details', title: 'Produit simple' },
+          { link: '/boutique/shop-details', title: 'Produit avec options' },
+          { link: '/boutique/shop-details', title: 'Produit externe' },
         ]
       },
       {
         link: '/shop',
         title: 'Autres pages',
         dropdownMenu: [
-          { link: '/shop/wishlist', title: 'Liste de souhaits' },
-          { link: '/shop/compare', title: 'Comparer' },
-          { link: '/shop/cart', title: 'Panier' },
+          { link: '/boutique/wishlist', title: 'Liste de souhaits' },
+          { link: '/boutique/compare', title: 'Comparer' },
+          { link: '/boutique/cart', title: 'Panier' },
           { link: '/pages/checkout', title: 'Paiement' },
           { link: '/pages/register', title: 'Créer un compte' },
           { link: '/pages/login', title: 'Connexion' },
@@ -77,12 +77,12 @@ export const mobile_menus: IMobileMenu[] = [
   },
 
   {
-    title: "Montres",
-    link: "/shop",
+    title: "Boutique",
+    link: "/boutique",
     // dropdownMenu: [
     //   { link: '/shop', title: 'Tous les produits' },
-    //   { link: '/shop/shop-4-col', title: '4 colonnes' },
-    //   { link: '/shop/shop-3-col', title: '3 colonnes' },
+    //   { link: '/boutique/shop-4-col', title: '4 colonnes' },
+    //   { link: '/boutique/shop-3-col', title: '3 colonnes' },
     //   { link: '/shop/shop-right', title: 'Barre latérale droite' },
     //   { link: '/shop/details-product', title: 'Détails du produit' },
     // ],

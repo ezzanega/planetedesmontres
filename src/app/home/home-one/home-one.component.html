@@ -1,5 +1,5 @@
 <!-- header start -->
-<app-header-one  [transparent]="true"></app-header-one>
+<app-header-one [header_big]="true" [transparent]="true"></app-header-one>
 <!-- header end -->
 
 <main>
@@ -41,7 +41,7 @@
                   <p class="slider__subtitle">{{ item.subtitle }}</p>
 
                   <!-- CTA Button -->
-                  <a routerLink="/shop" class="slider__btn">
+                  <a routerLink="/boutique" class="slider__btn">
                     Catalogue
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -62,36 +62,36 @@
     </div>
 
 
-<!-- Features Bar -->
-<div class="slider__features">
-  <div class="container">
-    <div class="slider__features-inner">
+    <!-- Features Bar -->
+    <div class="slider__features">
+      <div class="container">
+        <div class="slider__features-inner">
 
-      <!-- Authentic -->
-      <div class="slider__feature-item">
-        <span class="slider__feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0
+          <!-- Authentic -->
+          <div class="slider__feature-item">
+            <span class="slider__feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0
           003.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9
           11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598
           -3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-          </svg>
-        </span>
-        <div class="slider__feature-text">
-          <p class="slider__feature-title">AUTHENTIQUE</p>
-          <p class="slider__feature-desc">Montres 100% originales</p>
-        </div>
-      </div>
+              </svg>
+            </span>
+            <div class="slider__feature-text">
+              <p class="slider__feature-title">AUTHENTIQUE</p>
+              <p class="slider__feature-desc">Montres 100% originales</p>
+            </div>
+          </div>
 
-      <div class="slider__feature-divider"></div>
+          <div class="slider__feature-divider"></div>
 
-      <!-- Premium Quality -->
-      <div class="slider__feature-item">
-        <span class="slider__feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9
+          <!-- Premium Quality -->
+          <div class="slider__feature-item">
+            <span class="slider__feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9
           0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5
           18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007
           0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497
@@ -104,22 +104,22 @@
           3.99-2.48 5.228m2.48-5.492a46.32 46.32 0
           012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726
           6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0" />
-          </svg>
-        </span>
-        <div class="slider__feature-text">
-          <p class="slider__feature-title">QUALITÉ PREMIUM</p>
-          <p class="slider__feature-desc">Conçue à la perfection</p>
-        </div>
-      </div>
+              </svg>
+            </span>
+            <div class="slider__feature-text">
+              <p class="slider__feature-title">QUALITÉ PREMIUM</p>
+              <p class="slider__feature-desc">Conçue à la perfection</p>
+            </div>
+          </div>
 
-      <div class="slider__feature-divider"></div>
+          <div class="slider__feature-divider"></div>
 
-      <!-- Free Shipping -->
-      <div class="slider__feature-item">
-        <span class="slider__feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3
+          <!-- Free Shipping -->
+          <div class="slider__feature-item">
+            <span class="slider__feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3
           0m3 0h6m-9 0H3.375a1.125 1.125 0
           01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5
           1.5 0 00-3 0m3 0h1.125c.621 0
@@ -130,39 +130,39 @@
           00-10.026 0 1.106 1.106 0
           00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0
           0h-12" />
-          </svg>
-        </span>
-        <div class="slider__feature-text">
-          <p class="slider__feature-title">LIVRAISON GRATUITE</p>
-          <p class="slider__feature-desc">À partir de 2000 DH</p>
-        </div>
-      </div>
+              </svg>
+            </span>
+            <div class="slider__feature-text">
+              <p class="slider__feature-title">LIVRAISON GRATUITE</p>
+              <p class="slider__feature-desc">À partir de 700 DH</p>
+            </div>
+          </div>
 
-      <div class="slider__feature-divider"></div>
+          <div class="slider__feature-divider"></div>
 
-      <!-- Warranty -->
-      <div class="slider__feature-item">
-        <span class="slider__feature-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 11.5V14.5C9 16.433 7.433 18 5.5 18H4.5C2.567 18
+          <!-- Warranty -->
+          <div class="slider__feature-item">
+            <span class="slider__feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11.5V14.5C9 16.433 7.433 18 5.5 18H4.5C2.567 18
             1 16.433 1 14.5V9.5C1 7.567 2.567 6 4.5 6H7.5M16.5
             6C18.433 6 20 7.567 20 9.5V14.5C20 16.433 18.433 18
             16.5 18H15.5C13.567 18 12 16.433 12 14.5V9.5C12 7.567
             13.567 6 15.5 6M12 22C13.1046 22 14 21.1046 14
             20C14 18.8954 13.1046 18 12 18C10.8954 18 10 18.8954
             10 20C10 21.1046 10.8954 22 12 22Z" />
-          </svg>
-        </span>
-        <div class="slider__feature-text">
-          <p class="slider__feature-title">GARANTIE</p>
-          <p class="slider__feature-desc">1 an</p>
+              </svg>
+            </span>
+            <div class="slider__feature-text">
+              <p class="slider__feature-title">GARANTIE</p>
+              <p class="slider__feature-desc">1 an</p>
+            </div>
+          </div>
+
         </div>
       </div>
-
     </div>
-  </div>
-</div>
   </section>
   <!-- hero slider end -->
 
@@ -191,7 +191,7 @@
                   <div class="slider__content">
                     <h2 [innerHTML]="item.title"></h2>
                     <p>{{item.subtitle}}</p>
-                    <a routerLink="/shop" class="os-btn os-btn-2">Discover now</a>
+                    <a routerLink="/boutique" class="os-btn os-btn-2">Discover now</a>
                   </div>
                 </div>
               </div>
@@ -229,21 +229,21 @@
         </div>
       </div>
 
-<div class="product__slider">
-  <div class="row justify-content-center">
+      <div class="product__slider">
+        <div class="row justify-content-center">
 
-    @for (item of bestSellerProducts.slice(0, perView); track item.id) {
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+          @for (item of bestSellerProducts.slice(0, perView); track item.id) {
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
 
-        <div class="product-card-wrapper w-100">
-          <app-list-product-item [product]="item"></app-list-product-item>
+            <div class="product-card-wrapper w-100">
+              <app-list-product-item [product]="item"></app-list-product-item>
+            </div>
+
+          </div>
+          }
+
         </div>
-
       </div>
-    }
-
-  </div>
-</div>
 
       <!-- <div class="row">
         <div class="col-xl-12">
@@ -258,12 +258,13 @@
   </section>
   <!-- product area end -->
 
-  <div class=" banner mb-100 mx-5 rounded-2 ">
+  <div class=" banner mb-100 mx-2 mx-md-0 rounded-2 ">
     <p style="font-size:11px;letter-spacing:3px;color:#c69d41;text-transform:uppercase;margin-bottom:12px">Offre
       spéciale</p>
     <p class="banner-title">Nouvelle Collection <span style="color:#c69d41">2026</span></p>
     <p class="banner-sub">Découvrez les dernières pièces arrivées en boutique à Agdal</p>
-    <button [routerLink]="['/shop']" [queryParams]="{ tag: 'new' }" class="os-btn os-btn-white">Découvrir la collection</button>
+    <button [routerLink]="['/boutique']" [queryParams]="{ tag: 'new' }" class="os-btn os-btn-white">Découvrir la
+      collection</button>
   </div>
 
 
@@ -286,7 +287,7 @@
       </div>
       <div class="sale__area-slider">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
-           @for (item of saleProducts.slice(0, perView); track item.id) {
+          @for (item of saleProducts.slice(0, perView); track item.id) {
           <div class="col-lg-3 col-md-4">
             <!-- <app-product-item [product]="item"></app-product-item> -->
             <app-list-product-item [product]="item"></app-list-product-item>
@@ -303,14 +304,76 @@
   </section>
   <!-- sale off area end -->
   <!-- product banner area start -->
-  <div class="mx-5">
+  <div class="mx-2 mx-md-0">
     <app-product-banner></app-product-banner>
   </div>
   <!-- product banner area end -->
 
 
+  <!-- instagram section start -->
+  <section class="instagram__area mx-2 mx-md-0 pt-60 pb-80">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="instagram__title text-center mb-40">
+            <span class="instagram__label">Ce que disent nos clients</span>
+            <div class="section__title mb-10">
+              <h2>Avis <span class="gold-accent">clients</span> </h2>
+            </div>
+            <div class="section__sub-title">
+              <a href="https://www.instagram.com/planete_des_montres/" target="_blank" class="instagram__handle">
+                <i class="fab fa-instagram"></i>planete_des_montres
+              </a>
+            </div>
+            <!-- <h2 class="instagram__heading">Notre Instagram</h2> -->
+
+          </div>
+        </div>
+      </div>
+
+      <div class="client-convo__slider swiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide" *ngFor="let photo of instagramPhotos">
+            <div class="client-convo__item">
+
+              <img [src]="photo.image" [alt]="photo.alt">
+
+              <div class="client-convo__overlay">
+                <div class="client-convo__content">
+
+                  <!-- Stats -->
+                  <div class="client-convo__stats">
+                    <span><i class="fas fa-heart"></i> {{ photo.likes }}</span>
+                    <span><i class="far fa-comment"></i> {{ photo.comments }}</span>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Arrows -->
+        <div class="client-convo__nav">
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+
+      <div class="row mt-40">
+        <div class="col-12 text-center">
+          <a href="https://www.instagram.com/planete_des_montres/" target="_blank" class="instagram__cta">
+            <i class="fab fa-instagram"></i> Nous suivre sur Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- contact map area start -->
-  <section class="contact__map mx-5 pb-20">
+  <section class="contact__map mx-2 mx-md-0 pb-20">
     <div class="container-fluid p-0">
       <div class="row g-0">
         <div class="col-xl-12">
@@ -359,6 +422,9 @@
       </div>
     </div>
   </section>
+
+
+  <!-- instagram section end -->
   <!-- contact map area end -->
   <!-- blog area start -->
   <!-- <section class="blog__area pb-70">
@@ -383,6 +449,8 @@
     </div>
   </section> -->
   <!-- blog area end -->
+
+
 
   <!-- subscribe area start -->
   <app-subscribe-area></app-subscribe-area>

@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-list-product-item',
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './list-product-item.component.html',
   styleUrl: './list-product-item.component.scss',
 })
@@ -23,7 +24,7 @@ export class ListProductItemComponent {
   // In your component.ts
 
   getWhatsAppLink(product: any): string {
-    const phoneNumber = '212642736434';
+    const phoneNumber = '212662221866';
 
     const message = encodeURIComponent(
       `*New Product Inquiry*\n` +
@@ -38,7 +39,7 @@ export class ListProductItemComponent {
       `${product.stock ? `*Stock:* ${product.stock} units available\n` : ''}` +
       `\n━━━━━━━━━━━━━━━━━━\n` +
       `*Product Link:*\n` +
-      `${window.location.origin}/shop/shop-details/${product.id}\n` +
+      `${window.location.origin}/boutique/shop-details/${product.id}\n` +
       `━━━━━━━━━━━━━━━━━━\n\n` +
       `Hello! I am interested in this product. Could you please provide more information?`
     );

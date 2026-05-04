@@ -1,4 +1,4 @@
-<div class="shop__top grey-bg-6 bg-white  pb-90">
+<div class="shop__top grey-bg-6 bg-white pb-90 pt-100">
   <div class="container">
 
     <!-- Loading State -->
@@ -54,7 +54,7 @@
               <div class="product__sale">
                 @if (product.new) { <span class="new">new</span> }
                 @if (product.discount && +product.discount > 0) {
-                <span class="percent">-{{ product.discount }}%</span>
+                <span class="percent">  -{{ product.discount | number:'1.0-0' }}%</span>
                 }
               </div>
               }
@@ -82,56 +82,6 @@
               }
             </div>
           </nav>
-        </div>
-        }
-
-        <!-- ── Extra product info ── -->
-        @if (bottomShow) {
-        <div class="product__bottom-info ">
-
-          <!-- Category + Brand pills -->
-          <!-- <div class="product__info-pills mb-20">
-              @if (product.category) {
-              <div class="info-pill">
-                <span class="info-pill-label">Catégorie</span>
-                <span class="info-pill-value">{{ product.category }}</span>
-              </div>
-              }
-              @if (product.brand) {
-              <div class="info-pill">
-                <span class="info-pill-label">Marque</span>
-                <span class="info-pill-value">{{ product.brand }}</span>
-              </div>
-              }
-              @if (product.weight) {
-              <div class="info-pill">
-                <span class="info-pill-label">Poids</span>
-                <span class="info-pill-value">{{ product.weight }} kg</span>
-              </div>
-              }
-              @if (product.dimension) {
-              <div class="info-pill">
-                <span class="info-pill-label">Dimensions</span>
-                <span class="info-pill-value">{{ product.dimension }}</span>
-              </div>
-              }
-            </div> -->
-
-          <!-- Characteristics table -->
-          @if (getProductDetails().length > 0) {
-          <div class="product__details-info mb-30">
-            <h6 class="details-title mb-15">Caractéristiques</h6>
-            <table class="details-table">
-              @for (detail of getProductDetails(); track detail.key) {
-              <tr>
-                <td class="detail-key">{{ detail.key }}</td>
-                <td class="detail-value">{{ detail.value }}</td>
-              </tr>
-              }
-            </table>
-          </div>
-          }
-
         </div>
         }
       </div>
@@ -181,7 +131,7 @@
               <span class="old-price">{{ product.old_price }} MAD</span>
               }
               @if (product.discount && +product.discount > 0) {
-              <span class="discount-badge">-{{ product.discount }}%</span>
+              <span class="discount-badge">-{{ product.discount | number:'1.0-0' }}%</span>
               }
             </div>
           </div>
@@ -237,7 +187,7 @@
                   </div>
                 </div>
                 <div class="pro-cart-btn">
-                  <a  class="add-cart-btn mb-20 cursor-pointer" (click)="onSubmit()">
+                  <a class="add-cart-btn mb-20 cursor-pointer" (click)="onSubmit()">
                     <i class="fab fa-whatsapp"></i> Commander
                   </a>
                 </div>
@@ -246,7 +196,60 @@
 
             </form>
           </div>
-          <!-- ── Trust badges ── -->
+
+        </div>
+      </div>
+
+              <!-- ── Extra product info ── -->
+        @if (bottomShow) {
+        <div class="product__bottom-info ">
+
+          <!-- Category + Brand pills -->
+          <!-- <div class="product__info-pills mb-20">
+              @if (product.category) {
+              <div class="info-pill">
+                <span class="info-pill-label">Catégorie</span>
+                <span class="info-pill-value">{{ product.category }}</span>
+              </div>
+              }
+              @if (product.brand) {
+              <div class="info-pill">
+                <span class="info-pill-label">Marque</span>
+                <span class="info-pill-value">{{ product.brand }}</span>
+              </div>
+              }
+              @if (product.weight) {
+              <div class="info-pill">
+                <span class="info-pill-label">Poids</span>
+                <span class="info-pill-value">{{ product.weight }} kg</span>
+              </div>
+              }
+              @if (product.dimension) {
+              <div class="info-pill">
+                <span class="info-pill-label">Dimensions</span>
+                <span class="info-pill-value">{{ product.dimension }}</span>
+              </div>
+              }
+            </div> -->
+
+          <!-- Characteristics table -->
+          @if (getProductDetails().length > 0) {
+          <div class="product__details-info mb-30">
+            <h6 class="details-title mb-15">Caractéristiques</h6>
+            <table class="details-table">
+              @for (detail of getProductDetails(); track detail.key) {
+              <tr>
+                <td class="detail-key">{{ detail.key }}</td>
+                <td class="detail-value">{{ detail.value }}</td>
+              </tr>
+              }
+            </table>
+          </div>
+          }
+
+        </div>
+
+                            <!-- ── Trust badges ── -->
           <!-- <div class="trust-badges mb-25">
 
             <div class="trust-badge">
@@ -260,7 +263,7 @@
               </div>
               <div class="trust-badge-text">
                 <span class="trust-badge-title">Livraison Gratuite</span>
-                <span class="trust-badge-desc">À partir de 2000 DH</span>
+                <span class="trust-badge-desc">À partir de 700 DH</span>
               </div>
             </div>
 
@@ -277,7 +280,7 @@
               </div>
             </div>
 
-            <a href="tel:+212642736434" class="trust-badge trust-badge--phone">
+            <a href="tel:+212662221866" class="trust-badge trust-badge--phone">
               <div class="trust-badge-icon trust-badge-icon--phone">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07
@@ -295,15 +298,12 @@
             </a>
 
           </div> -->
-
-
-        </div>
-      </div>
+        }
     </div>
     }
   </div>
 
-    <!-- Success/Error Messages -->
+  <!-- Success/Error Messages -->
   <div class="toast-message success" *ngIf="showSuccessMessage">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <polyline points="20 6 9 17 4 12"></polyline>

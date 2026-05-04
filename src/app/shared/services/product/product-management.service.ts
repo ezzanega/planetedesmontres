@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductManagementService {
 
-  private apiUrl = 'https://ebackendapi.hnam3ak.ma/api/v1/products';
+  private apiUrl = 'https://shop.planetedesmontre.com/api/v1/products';
 
   constructor(private http: HttpClient) { }
 

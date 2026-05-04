@@ -114,7 +114,7 @@ export class DetailsProductAreaComponent implements OnInit, OnDestroy {
 
   getFullImageUrl(img: string): string {
     if (!img) return '';
-    return img.startsWith('http') ? img : `https://ebackendapi.hnam3ak.ma${img}`;
+    return img.startsWith('http') ? img : `https://shop.planetedesmontre.com/${img}`;
   }
 
   // Handle image selection from thumbnails
@@ -190,7 +190,7 @@ export class DetailsProductAreaComponent implements OnInit, OnDestroy {
       `🔢 Quantité : ${orderDetails.quantity}\n` +
       `💵 Total : ${orderDetails.total} MAD`;
 
-    const phoneNumber = '212642736434';
+    const phoneNumber = '212662221866';
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 

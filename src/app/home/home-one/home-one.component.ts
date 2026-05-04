@@ -31,6 +31,13 @@ export class HomeOneComponent {
   loading = false;
   error: string | null = null;
   private subscription = new Subscription();
+instagramPhotos = [
+  { image: 'assets/img/reviews/1.jpg', alt: 'Instagram photo 1', likes: 284, comments: 18, link: 'https://instagram.com/p/...' },
+  { image: 'assets/img/reviews/2.jpg', alt: 'Instagram photo 2', likes: 512, comments: 31, link: 'https://instagram.com/p/...' },
+  { image: 'assets/img/reviews/IMG_1013.jpg', alt: 'Instagram photo 3', likes: 198, comments: 9,  link: 'https://instagram.com/p/...' },
+  { image: 'assets/img/reviews/IMG_1014.jpg', alt: 'Instagram photo 4', likes: 347, comments: 22, link: 'https://instagram.com/p/...' },
+  { image: 'assets/img/reviews/IMG_1015.jpg', alt: 'Instagram photo 5', likes: 621, comments: 44, link: 'https://instagram.com/p/...' },
+];
 
 
   constructor(private productService: ProductService, private myproductService: ProductManagementService) {
@@ -44,6 +51,7 @@ export class HomeOneComponent {
     this.fetchBestSellers();
     this.fetchSaleProducts();
   }
+
 
 private fetchBestSellers(): void {
   this.loading = true;
@@ -110,7 +118,7 @@ private fetchSaleProducts(): void {
     // If path already includes http, return as is
     if (path.startsWith('http')) return path;
     // Otherwise prepend base URL
-    return 'https://ebackendapi.hnam3ak.ma' + path;
+    return 'https://shop.planetedesmontre.com' + path;
   }
 
   ngOnDestroy(): void {
@@ -136,6 +144,28 @@ private fetchSaleProducts(): void {
         },
       })
     }
+      new Swiper('.client-convo__slider', {
+    slidesPerView: 5,
+    spaceBetween: 10,
+    loop: true,
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+
+    breakpoints: {
+      0: { slidesPerView: 2 },
+      576: { slidesPerView: 3 },
+      768: { slidesPerView: 4 },
+      1200: { slidesPerView: 5 }
+    }
+  });
   }
 
 

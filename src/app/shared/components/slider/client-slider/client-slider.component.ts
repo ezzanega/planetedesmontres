@@ -125,8 +125,8 @@ export class ClientSliderComponent implements AfterViewInit {
     { id: 7, logo: 'assets/img/shop/marques/logo-boccadamo.png' },
     { id: 8, logo: 'assets/img/shop/marques/bigotti2-removebg-preview.png' },
     { id: 9, logo: 'assets/img/shop/marques/polo_prv-removebg-preview.png' },
-    { id: 9, logo: 'assets/img/shop/marques/Rosy-removebg-preview.png' },
-    { id: 9, logo: 'assets/img/shop/marques/diamond_paris2.png' },
+    { id: 10, logo: 'assets/img/shop/marques/Rosy-removebg-preview.png' },
+    { id: 11, logo: 'assets/img/shop/marques/diamond_paris2.png' },
   ];
 
   ngAfterViewInit() {

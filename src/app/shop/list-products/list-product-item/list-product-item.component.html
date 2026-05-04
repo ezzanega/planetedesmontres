@@ -1,6 +1,6 @@
 <div class="product__wrapper mb-60">
   <div class="product__thumb py-3 thumb-box d-flex flex-column align-items-center justify-content-center">
-    <a [routerLink]="['/shop/details-product', product.uid]" class="w-img thumb-link">
+    <a [routerLink]="['/boutique/details-product', product.uid]" class="w-img thumb-link">
       <img [src]="product.img" alt="product-img" class="main-img">
       <img class="product__thumb-2 second-img" [src]="product.thumb_img ? product.thumb_img : product.img" alt="product-img">
     </a>
@@ -10,17 +10,22 @@
       @if (product.new || product.discount) {
       <span class="new">new</span>
       }
-      @if (product.discount) {
+      <!-- @if (product.discount) {
       <span class="percent">-{{ product.discount }}%</span>
-      }
+      } -->
+    @if (product.discount && +product.discount > 0) {
+  <span class="percent">
+    -{{ product.discount | number:'1.0-2' }}%
+  </span>
+}
     </div>
     }
   </div>
-  <div class="product__content p-relative">
+  <div class="product__content mt-4 p-relative">
     <div class="product__content-inner">
       <h4>
-        <a [routerLink]="['/shop/details-product', product.uid]" [innerHTML]="product.title"></a>
-        <!-- <a [routerLink]="['/shop/details-product', product.uid]" [innerHTML]="product.title"></a> -->
+        <a [routerLink]="['/boutique/details-product', product.uid]" [innerHTML]="product.title"></a>
+        <!-- <a [routerLink]="['/boutique/details-product', product.uid]" [innerHTML]="product.title"></a> -->
       </h4>
       <div class="product__price transition-3">
         <span>MAD {{ product.price.toFixed(2) }}</span>
