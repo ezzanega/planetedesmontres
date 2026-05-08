@@ -1,11 +1,15 @@
+$serif: 'Georgia', 'Times New Roman', serif;
+
 .logo {
   display: flex;
   align-items: center;
 }
 
 .logo-img {
-  max-width: 190px;   /* your desired width */
-  height: auto;       /* keep proportions */
+  max-width: 190px;
+  /* your desired width */
+  height: auto;
+  /* keep proportions */
   width: 100%;
   object-fit: contain;
 }
@@ -20,9 +24,11 @@
 /* Mobile */
 @media (max-width: 480px) {
   .logo-img {
-    max-width: 100px;
+    max-width: 130px //100px;
+
   }
 }
+
 .announcement-bar {
   background-color: #1a1a1a;
   color: #ffffff;
@@ -55,7 +61,8 @@
     white-space: nowrap;
 
     i {
-      color: #c8a96e; /* gold accent — change to match your brand */
+      color: #c8a96e;
+      /* gold accent — change to match your brand */
       font-size: 13px;
     }
   }
@@ -68,6 +75,195 @@
 }
 
 @keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+// Assuming you have a default serif stack defined somewhere,
+// for example: $serif: "Times New Roman", Times, serif;
+
+// ── Text Logo (Planète Des Montres) ───────────────────────────────
+.logo-text {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  gap: 4px;
+  padding: 8px 0;
+
+  &__main {
+    font-family: 'Cinzel Decorative', 'Cinzel', 'Trajan Pro', $serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1;
+
+    // --- Using your provided gold gradient colors ---
+    background: linear-gradient(180deg,
+        #f0d080 0%, // Top: Bright, pale gold
+        #c8a96e 40%, // Mid: Muted, warm gold
+        #a07030 70%, // Dark: Deep bronze/shadow
+        #c8a96e 100% // Bottom: Muted, warm gold
+      );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    // HD ENHANCEMENT: Adds a sharp, micro-shadow. This creates a realistic
+    // "carved metal" or bevel look, ensuring it's sharp on light backgrounds.
+    filter: drop-shadow(0px 1px 0px rgba(160, 112, 48, 0.4));
+  }
+
+  &__divider {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 0 4px;
+  }
+
+  &__line {
+    flex: 1;
+    height: 1px;
+    // Using your provided muted gold with opacity
+    background: rgba(200, 169, 110, 0.6);
+  }
+
+  &__diamond {
+    width: 5px;
+    height: 5px;
+    // --- Using your solid muted gold ---
+    // HD ENHANCEMENT: Changed from a flat color to a simple
+    // gradient to match the multi-tonal text.
+    background: linear-gradient(135deg, #f0d080 0%, #a07030 100%);
+
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  &__sub {
+    font-family: 'Cormorant Garamond', $serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.28em; // Essential for luxury branding
+    text-transform: uppercase;
+    line-height: 1;
+
+    // --- Using your semi-transparent muted gold ---
+    // ENHANCEMENT: Increased opacity to 1.0 to ensure max clarity
+    // against white/clear backgrounds.
+    color: rgba(200, 169, 110, 1);
+  }
+
+
+  // ENHANCEMENT: Subtle interaction state
+  &:hover {
+
+    .logo-text__main,
+    .logo-text__diamond {
+      filter: drop-shadow(0px 1px 3px rgba(160, 112, 48, 0.3));
+      transition: filter 0.2s ease-out;
+    }
+  }
+}
+
+// ── Responsive ─────────────────────────────────────────────
+@media (max-width: 991px) {
+  .logo-text__main {
+    font-size: 1.25rem;
+  }
+
+  .logo-text__sub {
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+  }
+}
+
+@media (max-width: 575px) {
+  .logo-text__main {
+    font-size: 1.1rem;
+  }
+
+  .logo-text__sub {
+    font-size: 0.5rem;
+    letter-spacing: 0.18em;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ============================================================
+// Header Styles — Teal + Gold Theme
+// ============================================================
+
+// ── Variables (sync with hero-slider.scss) ─────────────────
+$gold: #c8a96e;
+$gold-light: rgba(200, 169, 110, 0.25);
+$gold-hover: rgba(200, 169, 110, 0.08);
+$dark: #1d3d3a;
+$dark-deep: #162e2b;
+$teal-glass: rgba(29, 61, 58, 0.97);
+$cream: #f5efe3;
+$text-light: #f5efe3;
+$text-muted: rgba(235, 222, 200, 0.70);
+$serif: 'Georgia', 'Times New Roman', serif;
+
+
+
+
+// ============================================================
+// Hamburger (mobile)
+// ============================================================
+
+.hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+  border: 1px solid $gold-light;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  border-color: $gold;
+  background: $gold-hover;
+
+  span {
+    display: block;
+    height: 1.5px;
+      background: $gold;
+    transition: background 0.2s ease, width 0.2s ease;
+
+    &:nth-child(2) {
+      width: 65%;
+    }
+  }
+
+  &:hover {
+    border-color: $gold;
+    background: $gold-hover;
+
+    span {
+      background: $gold;
+
+      &:nth-child(2) {
+        width: 100%;
+      }
+    }
+  }
 }

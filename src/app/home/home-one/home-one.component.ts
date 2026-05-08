@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import Swiper from 'swiper';
 import { Pagination, EffectFade } from 'swiper/modules';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -27,17 +27,25 @@ export class HomeOneComponent {
 
 
   bestSellerProducts: any[] = [];
-  saleProducts: any[]        = [];
+  saleProducts: any[] = [];
   loading = false;
   error: string | null = null;
   private subscription = new Subscription();
-instagramPhotos = [
-  { image: 'assets/img/reviews/1.jpg', alt: 'Instagram photo 1', likes: 284, comments: 18, link: 'https://instagram.com/p/...' },
-  { image: 'assets/img/reviews/2.jpg', alt: 'Instagram photo 2', likes: 512, comments: 31, link: 'https://instagram.com/p/...' },
-  { image: 'assets/img/reviews/IMG_1013.jpg', alt: 'Instagram photo 3', likes: 198, comments: 9,  link: 'https://instagram.com/p/...' },
-  { image: 'assets/img/reviews/IMG_1014.jpg', alt: 'Instagram photo 4', likes: 347, comments: 22, link: 'https://instagram.com/p/...' },
-  { image: 'assets/img/reviews/IMG_1015.jpg', alt: 'Instagram photo 5', likes: 621, comments: 44, link: 'https://instagram.com/p/...' },
-];
+
+
+  isMobile = window.innerWidth <= 768;
+
+  @HostListener('window:resize')
+  onResize() {
+    this.isMobile = window.innerWidth <= 768;
+  }
+  instagramPhotos = [
+    { image: 'assets/img/reviews/1.jpg', alt: 'Instagram photo 1', likes: 284, comments: 18, link: 'https://instagram.com/p/...' },
+    { image: 'assets/img/reviews/2.jpg', alt: 'Instagram photo 2', likes: 512, comments: 31, link: 'https://instagram.com/p/...' },
+    { image: 'assets/img/reviews/IMG_1013.jpg', alt: 'Instagram photo 3', likes: 198, comments: 9, link: 'https://instagram.com/p/...' },
+    { image: 'assets/img/reviews/IMG_1014.jpg', alt: 'Instagram photo 4', likes: 347, comments: 22, link: 'https://instagram.com/p/...' },
+    { image: 'assets/img/reviews/IMG_1015.jpg', alt: 'Instagram photo 5', likes: 621, comments: 44, link: 'https://instagram.com/p/...' },
+  ];
 
 
   constructor(private productService: ProductService, private myproductService: ProductManagementService) {
@@ -53,67 +61,67 @@ instagramPhotos = [
   }
 
 
-private fetchBestSellers(): void {
-  this.loading = true;
+  private fetchBestSellers(): void {
+    this.loading = true;
 
-  const sub = this.myproductService.getBestSellers().subscribe({
-    next: (response) => {
-      if (response.success) {
-        this.bestSellerProducts = response.data.slice(0, 10).map((p: any) => ({
-          ...p,
+    const sub = this.myproductService.getBestSellers().subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.bestSellerProducts = response.data.slice(0, 10).map((p: any) => ({
+            ...p,
 
-          // ✅ Fix numbers
-          price: Number(p.price) || 0,
-          old_price: Number(p.old_price) || 0,
+            // ✅ Fix numbers
+            price: Number(p.price) || 0,
+            old_price: Number(p.old_price) || 0,
 
-          // ✅ Fix images
-          img: this.getImageUrl(p.img),
-          thumb_img: this.getImageUrl(p.thumb_img),
+            // ✅ Fix images
+            img: this.getImageUrl(p.img),
+            thumb_img: this.getImageUrl(p.thumb_img),
 
-          // ✅ If you have multiple images
-          related_images: (p.related_images || []).map((img: string) =>
-            this.getImageUrl(img)
-          )
-        }));
+            // ✅ If you have multiple images
+            related_images: (p.related_images || []).map((img: string) =>
+              this.getImageUrl(img)
+            )
+          }));
+        }
+
+        this.loading = false;
+      },
+      error: (err) => {
+        this.error = err.error?.message || 'Something went wrong.';
+        this.loading = false;
       }
+    });
 
-      this.loading = false;
-    },
-    error: (err) => {
-      this.error = err.error?.message || 'Something went wrong.';
-      this.loading = false;
-    }
-  });
+    this.subscription.add(sub);
+  }
 
-  this.subscription.add(sub);
-}
-
-private fetchSaleProducts(): void {
-  this.loading = true;
-  const sub = this.myproductService.getSaleProducts().subscribe({
-    next: (response) => {
-      if (response.success) {
-        this.saleProducts = response.data.slice(0, 10).map((p: any) => ({
-          ...p,
-          price:     Number(p.price) || 0,
-          old_price: Number(p.old_price) || 0,
-          img:       this.getImageUrl(p.img),
-          thumb_img: this.getImageUrl(p.thumb_img),
-          related_images: (p.related_images || []).map((img: string) =>
-            this.getImageUrl(img)
-          )
-        }));
+  private fetchSaleProducts(): void {
+    this.loading = true;
+    const sub = this.myproductService.getSaleProducts().subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.saleProducts = response.data.slice(0, 10).map((p: any) => ({
+            ...p,
+            price: Number(p.price) || 0,
+            old_price: Number(p.old_price) || 0,
+            img: this.getImageUrl(p.img),
+            thumb_img: this.getImageUrl(p.thumb_img),
+            related_images: (p.related_images || []).map((img: string) =>
+              this.getImageUrl(img)
+            )
+          }));
+        }
+        this.loading = false;
+      },
+      error: (err) => {
+        this.error = err.error?.message || 'Something went wrong.';
+        this.loading = false;
       }
-      this.loading = false;
-    },
-    error: (err) => {
-      this.error = err.error?.message || 'Something went wrong.';
-      this.loading = false;
-    }
-  });
-  this.subscription.add(sub);
-}
-    private getImageUrl(path: string): string {
+    });
+    this.subscription.add(sub);
+  }
+  private getImageUrl(path: string): string {
     if (!path) return '';
     // If path already includes http, return as is
     if (path.startsWith('http')) return path;
@@ -144,28 +152,28 @@ private fetchSaleProducts(): void {
         },
       })
     }
-      new Swiper('.client-convo__slider', {
-    slidesPerView: 5,
-    spaceBetween: 10,
-    loop: true,
+    new Swiper('.client-convo__slider', {
+      slidesPerView: 5,
+      spaceBetween: 10,
+      loop: true,
 
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
 
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
 
-    breakpoints: {
-      0: { slidesPerView: 2 },
-      576: { slidesPerView: 3 },
-      768: { slidesPerView: 4 },
-      1200: { slidesPerView: 5 }
-    }
-  });
+      breakpoints: {
+        0: { slidesPerView: 2 },
+        576: { slidesPerView: 3 },
+        768: { slidesPerView: 4 },
+        1200: { slidesPerView: 5 }
+      }
+    });
   }
 
 

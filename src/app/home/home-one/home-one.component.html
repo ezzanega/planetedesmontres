@@ -1,5 +1,5 @@
 <!-- header start -->
-<app-header-one [header_big]="true" [transparent]="true"></app-header-one>
+<app-header-one [white_bg]="true" ></app-header-one>
 <!-- header end -->
 
 <main>
@@ -9,7 +9,7 @@
       <div class="swiper-wrapper">
         @for (item of hero_slider_data; track item.id) {
         <div class="single-slider slider__height d-flex align-items-center swiper-slide"
-          [style.backgroundImage]="'url(' + item.bgImg + ')'">
+          [style.backgroundImage]="'url(' + (isMobile ? item.bgImgMobile : item.bgImg) + ')'">
 
           <!-- Left gradient overlay -->
           <div class="slider__overlay"></div>

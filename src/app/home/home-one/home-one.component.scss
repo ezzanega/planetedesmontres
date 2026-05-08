@@ -1,22 +1,26 @@
 // ============================================================
-// Hero Slider Component Styles
-// Drop into your Angular project alongside the .ts and .html
+// Hero Slider Component Styles — Updated for Teal/Emerald BG
 // ============================================================
+
 // ── Variables ──────────────────────────────────────────────
-$gold:        #b89a5a;
-$gold-light:  rgba(184, 154, 90, 0.3);
-$dark:        #1a1714;
-$cream:       #f0ece6;
-$text-muted:  #8a7a62;
-$text-body:   #5a5040;
+$gold:        #c8a96e;
+$gold-light:  rgba(200, 169, 110, 0.25);
+$dark:        #0a2e2b;          // ← deeper emerald (matched to photo bg)
+$dark-mid:    #0d3530;          // ← mid overlay tone
+$cream:       #f5efe3;
+$text-light:  #f0ece4;          // ← slightly warmer white for contrast on deep teal
+$text-muted:  rgba(230, 218, 196, 0.85);
+$text-body:   rgba(210, 192, 160, 0.75);
 $serif:       'Georgia', 'Times New Roman', serif;
+
 // ── Section ────────────────────────────────────────────────
 .slider__area {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background: $cream;
+  background: $dark;
 }
+
 // ── Swiper Slide ───────────────────────────────────────────
 .single-slider {
   position: relative;
@@ -26,43 +30,48 @@ $serif:       'Georgia', 'Times New Roman', serif;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
-  // push content up a bit to leave room for the features bar
   padding-bottom: 120px;
 }
-// ── Left gradient overlay ──────────────────────────────────
+
+// ── Left gradient overlay — tuned for deep teal photo ──────
 .slider__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(240, 236, 230, 0.95) 0%,
-    rgba(240, 236, 230, 0.80) 40%,
-    rgba(240, 236, 230, 0.00) 68%
+    rgba(10, 46, 43, 0.94) 0%,    // ← deep emerald, high opacity left
+    rgba(10, 46, 43, 0.78) 35%,
+    rgba(10, 46, 43, 0.20) 62%,
+    rgba(10, 46, 43, 0.00) 100%
   );
   pointer-events: none;
   z-index: 1;
 }
+
 // ── Content wrapper ────────────────────────────────────────
 .slider__content {
   position: relative;
   z-index: 2;
-  padding-top: 80px;   // spacing from navbar
+  padding-top: 80px;
 }
+
 // ── Eyebrow label ──────────────────────────────────────────
 .slider__eyebrow {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 20px;
+
   span {
     font-family: $serif;
     font-size: 0.72rem;
     letter-spacing: 0.28em;
-    color: $text-muted;
+    color: $gold;
     font-weight: 400;
     text-transform: uppercase;
   }
 }
+
 // ── Gold accent line ───────────────────────────────────────
 .slider__gold-line {
   width: 2.5rem;
@@ -70,34 +79,38 @@ $serif:       'Georgia', 'Times New Roman', serif;
   background: $gold;
   margin-bottom: 1.5rem;
 }
+
 // ── Main heading ───────────────────────────────────────────
 .slider__title {
   font-family: $serif;
   font-size: clamp(2.6rem, 5.5vw, 5rem);
   font-weight: 600;
   line-height: 1.05;
-  color: $dark;
+  color: $text-light;
   letter-spacing: -0.01em;
   text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
+
 // ── Subtitle ───────────────────────────────────────────────
 .slider__subtitle {
   font-family: $serif;
   font-size: 1rem;
-  color: $text-body;
+  color: $text-muted;
   line-height: 1.75;
   margin-bottom: 2.5rem;
   max-width: 420px;
   font-weight: 400;
 }
+
 // ── CTA Button ─────────────────────────────────────────────
 .slider__btn {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: $dark;
-  color: $cream;
+  background: $gold;
+  color: $dark;
+  border: 1.5px solid $gold;
   padding: 0.85rem 2rem;
   font-size: 0.72rem;
   letter-spacing: 0.2em;
@@ -105,126 +118,138 @@ $serif:       'Georgia', 'Times New Roman', serif;
   text-transform: uppercase;
   text-decoration: none;
   font-family: $serif;
-  border: 1.5px solid $dark;
   transition: background 0.25s, color 0.25s, border-color 0.25s;
   cursor: pointer;
+
   svg {
     width: 16px;
     height: 16px;
     flex-shrink: 0;
     transition: transform 0.25s;
   }
+
   &:hover {
-    background: $gold;
+    background: transparent;
+    color: $gold;
     border-color: $gold;
-    color: #fff;
-    svg {
-      transform: translateX(4px);
-    }
+
+    svg { transform: translateX(4px); }
   }
 }
+
 // ── Swiper Dots ────────────────────────────────────────────
 .tp-slider-dot {
   position: absolute;
-  bottom: 130px;    // above the features bar
+  bottom: 130px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 8px;
   z-index: 20;
-  // Swiper injects <span> bullets — style them here
-  :global(.tp-dot),
+
   ::ng-deep .tp-dot {
     display: inline-block;
     width: 8px;
     height: 8px;
     border-radius: 9999px;
-    background: rgba(184, 154, 90, 0.4);
+    background: rgba(200, 169, 110, 0.4);
     border: none;
     cursor: pointer;
     transition: width 0.35s ease, background 0.3s ease;
     opacity: 1;
     margin: 0;
   }
-  :global(.tp-dot-active),
+
   ::ng-deep .tp-dot-active {
     width: 32px;
     background: $gold;
   }
 }
-// ── Features bar ───────────────────────────────────────────
+
+// ── Features bar — deeper emerald to match new bg ──────────
 .slider__features {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 10;
-  border-top: 1px solid $gold-light;
-  //background: rgba(240, 236, 230, 0.90);
-  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(200, 169, 110, 0.20);
+  background: rgba(10, 46, 43, 0.90);  // ← matches deep teal photo
+  backdrop-filter: blur(10px);
+
   .container {
     padding-top: 20px;
     padding-bottom: 20px;
   }
 }
+
 .slider__features-inner {
   display: flex;
   align-items: center;
   gap: 0;
+
   @media (max-width: 576px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    align-items: start;
   }
 }
+
 .slider__feature-item {
   display: flex;
   align-items: center;
   gap: 16px;
   flex: 1;
 }
+
 .slider__feature-divider {
   width: 1px;
   height: 40px;
-  background: $gold-light;
+  background: rgba(200, 169, 110, 0.20);
   margin: 0 2rem;
   flex-shrink: 0;
-  @media (max-width: 576px) {
-    display: none;
-  }
+
+  @media (max-width: 576px) { display: none; }
 }
+
 .slider__feature-icon {
   color: $gold;
   flex-shrink: 0;
+
   svg {
     width: 28px;
     height: 28px;
     display: block;
   }
 }
+
 .slider__feature-text {
   .slider__feature-title {
     font-family: $serif;
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.15em;
-    color: $dark;
+    color: #e8d9bc;
     text-transform: uppercase;
     margin: 0 0 2px;
   }
+
   .slider__feature-desc {
     font-family: $serif;
     font-size: 0.8rem;
-    color: $text-muted;
+    color: $text-body;
     margin: 0;
   }
 }
+
 // ── Slider height utility ──────────────────────────────────
 .slider__height {
   min-height: 100vh;
 }
-// ── Animations on slide change ────────────────────────────
+
+// ── Animations on slide change ─────────────────────────────
 .swiper-slide-active {
   .slider__eyebrow,
   .slider__gold-line,
@@ -233,135 +258,97 @@ $serif:       'Georgia', 'Times New Roman', serif;
   .slider__btn {
     animation: slideUp 0.7s ease forwards;
   }
+
   .slider__gold-line:first-of-type { animation-delay: 0.05s; }
   .slider__title                   { animation-delay: 0.10s; }
   .slider__gold-line:last-of-type  { animation-delay: 0.15s; }
   .slider__subtitle                { animation-delay: 0.20s; }
   .slider__btn                     { animation-delay: 0.25s; }
 }
+
 @keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-
+// ── Banner ─────────────────────────────────────────────────
 .banner {
-    background: linear-gradient(135deg, #1a1208, #0a0a0a);
-    border-radius: var(--border-radius-lg);
-    padding: 40px 24px;
-    text-align: center;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
+  background: linear-gradient(135deg, #051a18, #0a2e2b);  // ← emerald tones
+  border-radius: var(--border-radius-lg);
+  padding: 40px 24px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+
+  // &::before {
+  //   //: '⌚';
+  //   position: absolute;
+  //   font-size: 120px;
+  //   opacity: 0.06;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+  // }
 }
-.banner::before {
-    content: '⌚';
-    position: absolute;
-    font-size: 120px;
-    opacity: 0.06;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+
 .banner-title {
-    font-size: 22px;
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: $cream;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: $cream;
 }
+
 .banner-sub {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 24px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 24px;
 }
-.gold-accent {
-    color: #c69d41;
-}
+
+.gold-accent { color: $gold; }
+
+// ── Contact card ───────────────────────────────────────────
 .contact-card {
-background: rgb(0 0 0 / 3%);
-    border: 0.5px solid #e3e3e3;
-    border-radius: 10px;
-    padding: 24px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
-.contact-item {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-}
-.contact-icon {
-    font-size: 20px;
-    margin-top: 2px;
-}
-.contact-label {
-    font-size: 12px;
-    color: var(--color-text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-.contact-val {
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 2px;
+  background: rgb(0 0 0 / 3%);
+  border: 0.5px solid #e3e3e3;
+  border-radius: 10px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
 }
 
-
-
-
-
-
+.contact-item  { display: flex; gap: 12px; align-items: flex-start; }
+.contact-icon  { font-size: 20px; margin-top: 2px; }
+.contact-label { font-size: 12px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+.contact-val   { font-size: 14px; font-weight: 500; margin-top: 2px; }
 
 
 // ============================================================
-// iOS / iPhone Responsive Fix (iPhone X, XS, 13)
-// Screen widths: 375px (X/XS) and 390px (13)
+// iOS / iPhone Responsive Fix
 // ============================================================
 
-// ── Base mobile reset (≤768px) ─────────────────────────────
 @media (max-width: 768px) {
 
-  .slider__area {
-    // Let the section grow naturally instead of clipping
-    overflow: visible;
-  }
+  .slider__area { overflow: visible; }
 
   .single-slider {
     min-height: 100vh;
-    // Remove fixed padding-bottom — features bar is now outside the flow
     padding-bottom: 0;
-    background-position: 65% center; // shift watch image visible on narrow screens
+    background-position: 65% center;
     align-items: center;
   }
-
-  // .slider__overlay {
-  //   background: linear-gradient(
-  //     to right,
-  //     rgba(240, 236, 230, 0.96) 0%,
-  //     rgba(240, 236, 230, 0.88) 50%,
-  //     rgba(240, 236, 230, 0.50) 100%
-  //   );
-  // }
 
   .slider__content {
     padding-top: 90px;
     padding-bottom: 40px;
   }
 
-  .slider__title {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
+  .slider__title    { font-size: clamp(2rem, 8vw, 3rem); }
 
   .slider__subtitle {
     font-size: 0.88rem;
-    max-width: 100%;
+    max-width: 70%;
     margin-bottom: 1.75rem;
   }
 
@@ -370,119 +357,66 @@ background: rgb(0 0 0 / 3%);
     font-size: 0.68rem;
   }
 
-  // ── Pull features bar OUT of absolute positioning on mobile ─
-  // This is the core fix: absolute bottom causes height miscalculations on iOS
   .slider__features {
-    position: relative;  // ← key change
-    bottom: auto;
-    left: auto;
-    right: auto;
-    border-top: 1px solid $gold-light;
-    background: $cream;  // solid bg since it's no longer floating
+    position: relative;
+    bottom: auto; left: auto; right: auto;
+    border-top: 1px solid rgba(200, 169, 110, 0.20);
+    background: $dark;
     backdrop-filter: none;
 
-    .container {
-      padding-top: 16px;
-      padding-bottom: 16px;
-    }
+    .container { padding-top: 16px; padding-bottom: 16px; }
   }
 
-  // Hide dots on mobile (or reposition relative to slide)
-  .tp-slider-dot {
-    bottom: 16px;
-  }
+  .tp-slider-dot { bottom: 16px; }
 
-  // Features: 2×2 grid
   .slider__features-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem 1rem;
     align-items: start;
   }
 
-  .slider__feature-divider {
-    display: none;
-  }
+  .slider__feature-divider { display: none; }
 
-  .slider__feature-item {
-    flex: unset;
-    gap: 10px;
-  }
+  .slider__feature-item { flex: unset; gap: 10px; }
 
-  .slider__feature-icon svg {
-    width: 22px;
-    height: 22px;
-  }
+  .slider__feature-icon svg { width: 22px; height: 22px; }
 }
 
-// ── iPhone X / XS (375px) & iPhone 13 (390px) ─────────────
 @media (max-width: 430px) {
 
   .single-slider {
-    min-height: 70vh; // don't force full screen, let content breathe
+    min-height: 70vh;
     background-position: 70% center;
     padding-bottom: 0;
   }
 
-  .slider__content {
-    padding-top: 80px;
-    padding-bottom: 32px;
-  }
+  .slider__content { padding-top: 80px; padding-bottom: 32px; }
 
-  .slider__eyebrow span {
-    font-size: 0.62rem;
-    letter-spacing: 0.16em;
-  }
+  .slider__eyebrow span { font-size: 0.62rem; letter-spacing: 0.16em; }
 
-  .slider__gold-line {
-    width: 1.8rem;
-    margin-bottom: 1rem;
-  }
+  .slider__gold-line { width: 1.8rem; margin-bottom: 1rem; }
 
-  .slider__title {
-    font-size: clamp(1.85rem, 9.5vw, 2.5rem);
-    line-height: 1.08;
-  }
+  .slider__title    { font-size: clamp(1.85rem, 9.5vw, 2.5rem); line-height: 1.08; }
 
-  .slider__subtitle {
-    font-size: 0.82rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
+  .slider__subtitle { font-size: 0.82rem; line-height: 1.6; margin-bottom: 1.5rem; }
 
-  .slider__btn {
-    padding: 0.7rem 1.4rem;
-    font-size: 0.66rem;
-    gap: 0.5rem;
-  }
+  .slider__btn { padding: 0.7rem 1.4rem; font-size: 0.66rem; gap: 0.5rem; }
 
-  .tp-slider-dot {
-    bottom: 12px;
-  }
+  .tp-slider-dot { bottom: 12px; }
 
-  // Features: full single column
-  .slider__features-inner {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-  }
+  .slider__features-inner { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
 
-  .slider__features .container {
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
+  .slider__features .container { padding-top: 14px; padding-bottom: 14px; }
 
   .slider__feature-text {
     .slider__feature-title { font-size: 0.63rem; }
     .slider__feature-desc  { font-size: 0.73rem; }
   }
 
-  .slider__feature-icon svg {
-    width: 20px;
-    height: 20px;
-  }
+  .slider__feature-icon svg { width: 20px; height: 20px; }
 }
 
-// ── iOS Safe Area support (notch / home indicator) ─────────
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   @media (max-width: 430px) {
     .slider__features .container {
@@ -491,170 +425,43 @@ background: rgb(0 0 0 / 3%);
   }
 }
 
+// ── Client convo, Swiper arrows, Instagram — unchanged ─────
 .client-convo {
-
   &__item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    aspect-ratio: 1;
-    background: #f8f8f8;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    &:hover img {
-      transform: scale(1.08);
-    }
-
-    &:hover .client-convo__overlay {
-      opacity: 1;
-    }
+    position: relative; overflow: hidden; border-radius: 12px;
+    aspect-ratio: 1; background: #f8f8f8;
+    img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    &:hover img { transform: scale(1.08); }
+    &:hover .client-convo__overlay { opacity: 1; }
   }
-
   &__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(0,0,0,0.7),
-      rgba(0,0,0,0.2)
-    );
-    opacity: 0;
-    transition: 0.3s ease;
-    display: flex;
-    align-items: flex-end;
-    padding: 12px;
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+    opacity: 0; transition: 0.3s ease;
+    display: flex; align-items: flex-end; padding: 12px;
   }
-
-  &__content {
-    color: #fff;
-  }
-
-  &__name {
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-
-  &__message {
-    font-size: 12px;
-    opacity: 0.9;
-    margin-bottom: 6px;
-  }
-
-  &__stats {
-    display: flex;
-    gap: 12px;
-    font-size: 11px;
-  }
-
+  &__content { color: #fff; }
+  &__name    { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  &__message { font-size: 12px; opacity: 0.9; margin-bottom: 6px; }
+  &__stats   { display: flex; gap: 12px; font-size: 11px; }
 }
 
-.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
-    content: "next";
-    color: #fff;
-}
-.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
-    content: "prev";
-        color: #fff;
-}
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after { content: "next"; color: #fff; }
+
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after { content: "prev"; color: #fff; }
 
 .instagram {
-  &__label {
-    display: block;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #888;
-    margin-bottom: 10px;
-  }
-
-  &__heading {
-    font-size: 28px;
-    font-weight: 500;
-    margin-bottom: 10px;
-  }
-
-  &__handle {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    color: #888;
-    text-decoration: none;
-    transition: color 0.2s;
-
-    &:hover { color: #1a1a1a; }
-  }
-
-  &__item {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 1;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    &:hover img { transform: scale(1.06); }
-    &:hover .instagram__overlay { opacity: 1; }
-  }
-
-  &__overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &__stat {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  &__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 32px;
-    border: 1.5px solid #1a1a1a;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #1a1a1a;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-
-    &:hover {
-      background: #1a1a1a;
-      color: #fff;
-    }
-  }
+  &__label   { display: block; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #888; margin-bottom: 10px; }
+  &__heading { font-size: 28px; font-weight: 500; margin-bottom: 10px; }
+  &__handle  { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: #888; text-decoration: none; transition: color 0.2s; &:hover { color: #1a1a1a; } }
+  &__item    { display: block; position: relative; overflow: hidden; aspect-ratio: 1; img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; } &:hover img { transform: scale(1.06); } &:hover .instagram__overlay { opacity: 1; } }
+  &__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; gap: 20px; opacity: 0; transition: opacity 0.3s ease; }
+  &__stat    { display: flex; align-items: center; gap: 5px; color: #fff; font-size: 13px; font-weight: 600; }
+  &__cta     { display: inline-flex; align-items: center; gap: 8px; padding: 13px 32px; border: 1.5px solid #1a1a1a; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #1a1a1a; text-decoration: none; transition: background 0.2s, color 0.2s; &:hover { background: #1a1a1a; color: #fff; } }
 }
 
-
-
-
-
-
+.main-menu nav ul li > a {
+  color: rgba(245, 239, 227, 0.85) !important;
+}

@@ -1,28 +1,29 @@
 import { IHeroSlider } from '../types/hero-slider-t';
 
-// hero slider one start
+
 const hero_slider_one: IHeroSlider[] = [
   {
     id: 1,
-    bgImg: 'assets/img/slider/banner-6.png',
+    bgImg: 'assets/img/slider/banner-23.png',
+    bgImgMobile: 'assets/img/slider/banner-23.png',
     title: 'Handmade <br /> Hand carved Coffee',
     subtitle:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Découvrez une collection de montres où la précision horlogère rencontre l’élégance intemporelle, conçues pour accompagner chaque moment important de votre vie.',
   },
-  {
-    id: 2,
-    bgImg: 'https://cdn11.bigcommerce.com/s-2nfdiyehvz/images/stencil/1280w/carousel/9/slideshow-home2-1__81809.jpg?c=2',
-    title: 'Think Different &<br /> Do it otherwise',
-    subtitle:
-      'Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.',
-  },
-  {
-    id: 3,
-    bgImg: 'https://cdn11.bigcommerce.com/s-2nfdiyehvz/images/stencil/1280w/carousel/3/slideshow-1.jpg?c=2',
-    title: 'High Beam<br /> by Tom Chung',
-    subtitle:
-      'High Beam is an adjustable desk or shelf light that offers a wide variety of lighting possibilities',
-  },
+  // {
+  //   id: 2,
+  //   bgImg: 'https://cdn11.bigcommerce.com/s-2nfdiyehvz/images/stencil/1280w/carousel/9/slideshow-home2-1__81809.jpg?c=2',
+  //   title: 'Think Different &<br /> Do it otherwise',
+  //   subtitle:
+  //     'Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.',
+  // },
+  // {
+  //   id: 3,
+  //   bgImg: 'https://cdn11.bigcommerce.com/s-2nfdiyehvz/images/stencil/1280w/carousel/3/slideshow-1.jpg?c=2',
+  //   title: 'High Beam<br /> by Tom Chung',
+  //   subtitle:
+  //     'High Beam is an adjustable desk or shelf light that offers a wide variety of lighting possibilities',
+  // },
 ];
 
 // hero slider two

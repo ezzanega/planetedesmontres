@@ -2,44 +2,53 @@
 <div class="banner__area-2 pb-60">
   <div class="container-fluid p-0">
     <div class="row g-0">
-
       @for (item of banners; track item.type; let index = $index) {
         <div class="col-xl-6 col-lg-6">
           <div class="banner__item-2 p-relative mb-30" [ngClass]="item.itemClass">
 
             <!-- IMAGE -->
             <div class="banner__thumb fix banner-thumb-ratio">
-              <a [routerLink]="['/shop']" [queryParams]="{ type: item.type }" class="w-img">
+              <a [routerLink]="['/boutique']" [queryParams]="{ type: item.type }" class="w-img">
                 <img [src]="item.banner_img" alt="banner">
               </a>
             </div>
+
+            <!-- OVERLAY -->
+            <div class="banner__overlay" [ngClass]="'banner__overlay--'"></div>
 
             <!-- CONTENT -->
             <div [class]="getContentClass(index)">
 
               <!-- LABEL -->
-              <span class="text-uppercase">Collection {{ item.label }}</span>
+              <div class="banner__label">
+                <span class="banner__label-line"></span>
+                <span class="banner__label-text">Collection {{ item.label }}</span>
+              </div>
 
               <!-- TITLE -->
-              <h4>
+              <h4 class="banner__title">
                 <a [routerLink]="['/shop']" [queryParams]="{ type: item.type }">
                   {{ item.title }}
                 </a>
               </h4>
 
               <!-- DESCRIPTION -->
-              <p [style.max-width.px]="getDescWidth()">{{ item.desc }}</p>
+              <p class="banner__desc" [style.max-width.px]="getDescWidth()">{{ item.desc }}</p>
 
               <!-- BUTTON -->
-              <a [routerLink]="['/shop']" [queryParams]="{ type: item.type }" class="os-btn os-btn-2">
-                Découvrir la collection
+              <a [routerLink]="['/boutique']" [queryParams]="{ type: item.type }" class="os-btn os-btn-2">
+                <span class="os-btn__label">Découvrir la collection</span>
+                <span class="os-btn__arrow">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
               </a>
 
             </div>
           </div>
         </div>
       }
-
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@ import { IMenuType, IMobileMenu } from "../types/menu-d-t";
 const menuData: IMenuType[] = [
   {
     link: '/',
-    title: 'Accueil',
+    title: 'ACCEUIL',
     hasDropdown: false,
     megamenu: false,
     dropdownItems: [
@@ -13,13 +13,13 @@ const menuData: IMenuType[] = [
   },
   {
     link: '/boutique',
-    title: 'Boutique',
+    title: 'COLLECTION',
     hasDropdown: false,
     megamenu: false,
     dropdownItems: [
       {
         link: '/shop',
-        title: 'Boutique',
+        title: 'COLLECTION',
         dropdownMenu: [
           { link: '/boutique', title: 'Boutique standard' },
           { link: '/boutique/shop-right', title: 'Barre latérale droite' },
@@ -59,11 +59,11 @@ const menuData: IMenuType[] = [
   },
   {
     link: '/pages/about-us',
-    title: 'À propos',
+    title: 'À PROPOS',
   },
   {
     link: '/pages/contact',
-    title: 'Contact',
+    title: 'CONTACT',
   },
 ];
 

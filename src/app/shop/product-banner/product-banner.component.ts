@@ -18,7 +18,7 @@ export class ProductBannerComponent {
       type: 'Homme',
       title: 'Montres pour Homme',
       desc: 'Découvrez des montres pour homme au design puissant, élégant et intemporel.',
-      banner_img: 'assets/img/shop/banner/banner-6.png',
+      banner_img: 'assets/img/slider/banner-42.png',
       itemClass: 'banner-right pr-15',
     },
     {
@@ -26,7 +26,7 @@ export class ProductBannerComponent {
       type: 'Femme',
       title: 'Montres pour Femme',
       desc: 'Explorez des montres pour femme raffinées, modernes et sophistiquées.',
-      banner_img: 'assets/img/shop/banner/banner-women.png',
+      banner_img: 'assets/img/slider/2.png',
       itemClass: 'banner-left pl-15',
     }
   ];
@@ -39,6 +39,6 @@ export class ProductBannerComponent {
   }
 
   getDescWidth(): number {
-    return this.style_3 ? 250 : 450;
+    return this.style_3 ? 250 : 300;
   }
 }
